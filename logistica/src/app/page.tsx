@@ -7,7 +7,7 @@ export default function Home() {
     <>
       <body>
         <Header />
-        <main className='bg-blue-100'>
+        <main className='bg-gray-100'>
           <div className="flex flex-col space-y-4 h-screen justify-center items-center ">
             <h2>ENCONTRE SEU PEDIDO:</h2>
             <div className="flex relative ">
@@ -29,14 +29,14 @@ export default function Home() {
                 placeholder="DIGITE O CODIGO..."
               />
             </div>
-            <button
-              type="button"
-              className=" pg-2 py-2 px-4  bg-white dark:bg-gray-800 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-w-1/6 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
-            >
-              <Link href="/pedido">
+            <Link href="/pedido">
+              <button
+                type="button"
+                className=" pg-2 py-2 px-4  bg-white dark:bg-gray-800 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-w-1/6 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+              >
                 Find
-              </Link>
-            </button>
+              </button>
+            </Link>
 
           </div>
         </main>

@@ -4,7 +4,7 @@ export default function Pedido() {
     return (
         <>
             <Header />
-            <main>
+            <main className='bg-gray-100'>
                 <div className="flex flex-col space-y-4 h-screen justify-center items-center ">
                     <div className="flex flex-col w-1/2 gap-5 p-2 mx-auto bg-white shadow-lg select-none sm:p-4 sm:h-64 rounded-2xl sm:flex-row ">
                         

@@ -11,7 +11,7 @@ export default function header() {
                                 <div className="w-full justify-between flex items-center">
                                     <button>
                                         <Link href="/">
-                                            <div className='border-2 rounded-full bg-blue-100'>
+                                            <div className='border-2 rounded-full bg-gray-100'>
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg"
                                                     width="50"
