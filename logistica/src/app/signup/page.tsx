@@ -1,10 +1,20 @@
 import Header from '../header';
+import Background from '../../../public/images/background.jpg';
+import Image from 'next/image';
 
 export default function SignUp() {
     return (
         <>
             <Header />
-            <main className="bg-hero bg-no-repeat bg-cover bg-center bg-fixed">
+            {/* <div style={{ zIndex: -1, position: 'fixed', width: "100vw", height: "100vh" }}>
+                <Image
+                    src={Background}
+                    alt="background"
+                    layout="fill"
+                    objectFit="cover"
+                />
+            </div> */}
+            <main className='bg-gray-100'>
                 <div className="w-full h-screen font-sans bg-cover bg-landscape">
                     <div className="container flex items-center justify-center flex-1 h-full mx-auto">
                         <div className="w-full max-w-lg">
@@ -29,7 +39,7 @@ export default function SignUp() {
                                             ></path>
                                         </svg>
                                     </div>
-                                    <p className="mb-8 text-2xl font-light text-center text-white">
+                                    <p className="mb-8 text-2xl font-light text-center">
                                         SignUp
                                     </p>
                                     <div className="flex gap-4 mb-2">

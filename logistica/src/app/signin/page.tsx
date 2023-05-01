@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Header from '../header';
-import ImageLogistic from '../../../public/images/logistics.jpg';
+import ImageLogistic from '../../../public/images/logistic.png';
 import Image from 'next/image';
 
 export default function Signin() {
@@ -9,7 +9,7 @@ export default function Signin() {
             <Header />
             <main className='bg-gray-100'>
                 <div className="flex flex-wrap w-full">
-                    <div className="flex flex-col w-full md:w-1/2">
+                    <div className="flex flex-col w-full md:w-1/2 h-screen">
                         <div className="flex flex-col justify-center px-8 pt-8 my-auto md:justify-start md:pt-0 md:px-24 lg:px-32">
                             <div className='flex flex-col justify-center items-center'>
                                 <svg
@@ -89,7 +89,7 @@ export default function Signin() {
                             </div>
                         </div>
                     </div>
-                    <div className="w-1/2 shadow-2xl justify-center items-center">
+                    <div className="w-1/2 shadow-2xl flex flex-col justify-center items-center">
                         <Image 
                         src={ImageLogistic} 
                         alt="Picture of the author"
