@@ -4,7 +4,7 @@ export default function SignUp() {
     return (
         <>
             <Header />
-            <main className='bg-gray-100'>
+            <main className="bg-hero bg-no-repeat bg-cover bg-center bg-fixed">
                 <div className="w-full h-screen font-sans bg-cover bg-landscape">
                     <div className="container flex items-center justify-center flex-1 h-full mx-auto">
                         <div className="w-full max-w-lg">

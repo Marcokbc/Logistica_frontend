@@ -93,7 +93,7 @@ export default function Signin() {
                         <Image 
                         src={ImageLogistic} 
                         alt="Picture of the author"
-                        className='w-screen'
+                        className=''
                         />
                     </div>
                 </div>
