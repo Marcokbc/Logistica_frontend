@@ -14,8 +14,10 @@ export default function Home() {
             <div className="lg:mt-0 lg:flex-shrink-0">
               <div className="flex flex-col space-y-4 h-screen justify-center items-center ">
                 <div className="text-center w-full mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
-                  <h2 className="text-3xl font-extrabold text-black dark:text-white sm:text-4xl">
-                    <span className="block">Want to find your order?</span>
+                  <h2 className="flex flex-col justify-center items-center text-3xl font-extrabold text-black dark:text-white sm:text-4xl">
+                    <div className='bg-gray-800 rounded-lg w-2/5'>
+                      <span className="block">Want to find your order?</span>
+                    </div>
                     <span className="block text-gray-800">It's today or never.</span>
                   </h2>
                 </div>
@@ -51,7 +53,7 @@ export default function Home() {
             </div>
           </div>
         </main>
-        <Footer/>
+        <Footer />
       </body>
     </>
   )

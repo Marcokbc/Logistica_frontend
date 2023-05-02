@@ -1,15 +1,30 @@
+"use client";
+import { useState } from "react";
+import ModalDelete from "../components/ModalDelete";
 import Footer from "../footer";
 import Header from "../header";
 
 export default function Admin() {
+    const [showModalDelete,setShowModalDelete] = useState(false);
+    const handleClose = () => setShowModalDelete(false);
+    
     return (
         <>
             <Header />
             <main className='bg-gray-100'>
                 <div className="lg:mt-0 lg:flex-shrink-0">
-                    <div className="flex flex-col space-y-4 h-screen justify-center items-center ">
+                    <div className="flex flex-col space-y-4 h-screen justify-center ">
                         <div className="flex flex-col justify-center items-center text-center w-full mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
+                            <div className="flex flex-col justify-start items-start w-1/2">
+                                <button
+                                    type="button"
+                                    className="py-2 mb-2 px-4 content-start bg-gray-800 hover:bg-sky-700 focus:ring-sky-500 focus:ring-offset-sky-200 text-white w-18 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+                                >
+                                    Create new Pedido
+                                </button>
+                            </div>
                             <table className="table p-4 bg-white rounded-lg shadow">
+
                                 <thead>
                                     <tr>
                                         <th className="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
@@ -75,7 +90,12 @@ export default function Admin() {
                                             </button>
                                         </td>
                                         <td className="border-b-2 p-4 dark:border-dark-5">
-                                            <button>
+                                            <button
+                                                type="button"
+                                                data-modal-target="popup-modal"
+                                                data-modal-toggle="popup-modal"
+                                                onClick={()=>setShowModalDelete(true)}
+                                                >
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg"
                                                     width="25"
@@ -161,6 +181,8 @@ export default function Admin() {
                 </div>
             </main>
             <Footer />
+
+            <ModalDelete onCLose={handleClose} isVisible={showModalDelete}/>
 
         </>
     )

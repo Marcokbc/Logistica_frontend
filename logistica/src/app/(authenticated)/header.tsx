@@ -8,7 +8,7 @@ export default function Header() {
                     <nav className="bg-white dark:bg-gray-800  shadow ">
                         <div className="px-8 mx-auto max-w-7xl">
                             <div className="flex items-center justify-between h-16">
-                                <div className="w-full justify-between flex items-center">
+                                <div className="w-full justify-between flex items-center font-extrabold text-gray-100">
                                     <h1>Bem vindo, USERNAME</h1>
                                     <div className="hidden md:block">
                                         <div className="flex items-baseline ml-10 space-x-4">
