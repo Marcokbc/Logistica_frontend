@@ -89,7 +89,7 @@ export default function Signin() {
                             </div>
                         </div>
                     </div>
-                    <div className="w-1/2 shadow-2xl flex flex-col justify-center items-center">
+                    <div className="w-1/2 shadow-2xl hidden md:flex flex-col justify-center items-center">
                         <Image 
                         src={ImageLogistic} 
                         alt="Picture of the author"

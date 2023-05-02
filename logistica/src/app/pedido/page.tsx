@@ -9,22 +9,22 @@ export default function Pedido() {
                     <div className="flex flex-col w-1/2 gap-5 p-2 mx-auto bg-white shadow-lg select-none sm:p-4 sm:h-70 rounded-2xl sm:flex-row ">
                         <div className="flex flex-col flex-1 gap-5 sm:p-2">
                             <div className="flex flex-col flex-1 gap-3">
-                                <div className="w-full bg-gray-200 animate-pulse h-14 rounded-2xl">
-                                    <p>NOME DO PEDIDO</p>
+                                <div className="flex flex-col items-center w-full animate-pulse h-14 rounded-2xl">
+                                    <h2 className='text-2xl'>NOME DO PEDIDO</h2>
                                 </div>
-                                <div className="w-full h-7 bg-gray-200 animate-pulse rounded-2xl">
+                                <div className="w-full h-7 animate-pulse rounded-2xl">
                                     <p>ORIGEM : DESTINO</p>
                                 </div>
-                                <div className="w-full h-12 bg-gray-200 animate-pulse rounded-2xl">
+                                <div className="w-full h-12 animate-pulse rounded-2xl">
                                     <p>Rotas</p>
                                     <p>ROTA : DATA</p>
                                 </div>
                             </div>
                             <div>
-                                <p>Status</p>
+                                <p className="animate-pulse">Status</p>
                             </div>
-                            <div className="flex gap-3 mt-auto">
-                                <div className="flex flex-col justify-center items-center w-10 h-15 bg-gray-200 rounded-full animate-pulse">
+                            <div className="flex gap-3 xl:gap-24 2xl:gap-28 md:gap-5 mt-auto">
+                                <div className="flex flex-col justify-center items-center w-10 h-15 bg-red-400 rounded-full animate-pulse">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="20"
@@ -39,7 +39,7 @@ export default function Pedido() {
                                         <path d="M77.296 33.027L71.02 26.75c-.442-.442-1.227-.442-1.668 0L39.67 56.432 28.898 45.661c-.441-.442-1.225-.442-1.668 0l-6.276 6.276a1.178 1.178 0 000 1.668l17.882 17.881a1.18 1.18 0 001.668 0l36.792-36.792a1.177 1.177 0 000-1.667z"></path>
                                     </svg>
                                 </div>
-                                <div className="flex flex-col justify-center items-center w-10 h-15 bg-gray-200 rounded-full animate-pulse">
+                                <div className="flex flex-col justify-center items-center w-10 h-15 bg-red-400 rounded-full animate-pulse">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="20"
@@ -55,7 +55,7 @@ export default function Pedido() {
                                         ></path>
                                     </svg>
                                 </div>
-                                <div className="flex flex-col justify-center items-center w-10 h-15 bg-gray-200 rounded-full animate-pulse">
+                                <div className="flex flex-col justify-center items-center w-10 h-15 bg-red-400 rounded-full animate-pulse">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="30"
@@ -68,7 +68,7 @@ export default function Pedido() {
                                         <path d="M70.074 39.215h-2.512V16.847H23.335l-7.589 13.092H1.896v9.276H0v5.237h1.896v3.271h9.276c.614 3.134 3.375 5.504 6.687 5.504s6.071-2.374 6.68-5.504h20.169c.615 3.134 3.371 5.504 6.681 5.504a6.82 6.82 0 006.687-5.504h9.482v-3.271h2.511l.005-5.237zM17.859 50.616a4.206 4.206 0 01-4.202-4.197 4.207 4.207 0 014.202-4.202 4.199 4.199 0 010 8.399zm33.536 0a4.205 4.205 0 01-4.197-4.197 4.208 4.208 0 014.197-4.202 4.208 4.208 0 014.204 4.202 4.205 4.205 0 01-4.204 4.197zm13.551-5.507h-6.861c-.616-3.134-3.374-5.504-6.688-5.504-3.31 0-6.072 2.374-6.684 5.504H24.546c-.614-3.134-3.368-5.504-6.68-5.504s-6.078 2.374-6.687 5.504H4.518V32.562H17.26l7.586-13.095h40.105v25.646h-.005v-.004zM20.443 32.284l5.913-10.2h8.784v10.2H20.443z"></path>
                                     </svg>
                                 </div>
-                                <div className="flex flex-col justify-center items-center w-10 h-15 bg-gray-200 rounded-full animate-pulse">
+                                <div className="flex flex-col justify-center items-center w-10 h-15 bg-red-400 rounded-full animate-pulse">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="25"
@@ -96,7 +96,7 @@ export default function Pedido() {
                                         ></path>
                                     </svg>
                                 </div>
-                                <div className="flex flex-col justify-center items-center w-10 h-10 bg-gray-200 rounded-full animate-pulse">
+                                <div className="flex flex-col justify-center items-center w-10 h-10 bg-red-400 rounded-full animate-pulse">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="25"
@@ -110,6 +110,7 @@ export default function Pedido() {
                         </div>
                     </div>
                 </div>
+                
             </main>
         </>
     )

@@ -1,20 +1,22 @@
 import Header from '../header';
-import Background from '../../../public/images/background.jpg';
+import Background from '../../../public/images/logistica-background.jpg';
 import Image from 'next/image';
 
 export default function SignUp() {
     return (
         <>
             <Header />
-            {/* <div style={{ zIndex: -1, position: 'fixed', width: "100vw", height: "100vh" }}>
-                <Image
-                    src={Background}
-                    alt="background"
-                    layout="fill"
-                    objectFit="cover"
-                />
-            </div> */}
-            <main className='bg-gray-100'>
+
+            <main >
+                <div style={{ zIndex: -1, position: 'fixed', width: "100vw", height: "100vh" }}>
+                    <Image
+                        src={Background}
+                        alt="background"
+                        layout="fill"
+                        objectFit="cover"
+                        className='opacity-50'
+                    />
+                </div>
                 <div className="w-full h-screen font-sans bg-cover bg-landscape">
                     <div className="container flex items-center justify-center flex-1 h-full mx-auto">
                         <div className="w-full max-w-lg">
@@ -57,12 +59,12 @@ export default function SignUp() {
                                     </div>
                                     <div className="mb-2">
                                         <div className=" relative ">
-                                            <input type="text" id="login-with-bg-password" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Password" />
+                                            <input type="password" id="login-with-bg-password" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Password" />
                                         </div>
                                     </div>
                                     <div className="mb-2">
                                         <div className=" relative ">
-                                            <input type="text" id="login-with-bg-password" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Confirm Password" />
+                                            <input type="password" id="login-with-bg-password" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Confirm Password" />
                                         </div>
                                     </div>
                                     <div className="flex items-center justify-between mt-4">
