@@ -8,7 +8,7 @@ export default function Admin() {
             <main className='bg-gray-100'>
                 <div className="lg:mt-0 lg:flex-shrink-0">
                     <div className="flex flex-col space-y-4 h-screen justify-center items-center ">
-                        <div className="text-center w-full mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
+                        <div className="flex flex-col justify-center items-center text-center w-full mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
                             <table className="table p-4 bg-white rounded-lg shadow">
                                 <thead>
                                     <tr>
@@ -16,40 +16,85 @@ export default function Admin() {
                                             #
                                         </th>
                                         <th className="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
-                                            First name
+                                            Name
                                         </th>
                                         <th className="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
-                                            Last name
+                                            Status
                                         </th>
                                         <th className="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
-                                            Username
+                                            Codigo
+                                        </th>
+                                        <th className="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
+                                            Rotas
+                                        </th>
+                                        <th className="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
+                                            Alterar
+                                        </th>
+                                        <th className="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
+                                            Deletar
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr className="text-gray-700">
                                         <td className="border-b-2 p-4 dark:border-dark-5">1</td>
-                                        <td className="border-b-2 p-4 dark:border-dark-5">Jean Marc</td>
-                                        <td className="border-b-2 p-4 dark:border-dark-5">Louis</td>
+                                        <td className="border-b-2 p-4 dark:border-dark-5">Roupas</td>
+                                        <td className="border-b-2 p-4 dark:border-dark-5">Pedido Efetuado</td>
                                         <td className="border-b-2 p-4 dark:border-dark-5">Jl987</td>
-                                    </tr>
-                                    <tr className="text-gray-700">
-                                        <td className="border-b-2 p-4 dark:border-dark-5">2</td>
-                                        <td className="border-b-2 p-4 dark:border-dark-5">Eric</td>
-                                        <td className="border-b-2 p-4 dark:border-dark-5">Prouve</td>
-                                        <td className="border-b-2 p-4 dark:border-dark-5">prouveE</td>
-                                    </tr>
-                                    <tr className="text-gray-700">
-                                        <td className="border-b-2 p-4 dark:border-dark-5">3</td>
-                                        <td className="border-b-2 p-4 dark:border-dark-5">Julien</td>
-                                        <td className="border-b-2 p-4 dark:border-dark-5">Clai</td>
-                                        <td className="border-b-2 p-4 dark:border-dark-5">CJUL87</td>
-                                    </tr>
-                                    <tr className="text-gray-700">
-                                        <td className="border-b-2 p-4 dark:border-dark-5">4</td>
-                                        <td className="border-b-2 p-4 dark:border-dark-5">Igor</td>
-                                        <td className="border-b-2 p-4 dark:border-dark-5">Louth</td>
-                                        <td className="border-b-2 p-4 dark:border-dark-5">IGL89_9</td>
+                                        <td className="border-b-2 p-4 dark:border-dark-5">
+                                            <button>
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    width="25"
+                                                    height="25"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    <g>
+                                                        <path
+                                                            stroke="#000"
+                                                            strokeLinecap="round"
+                                                            strokeLinejoin="round"
+                                                            strokeWidth="2"
+                                                            d="M8 12h4m0 0h4m-4 0v4m0-4V8m0 13a9 9 0 110-18 9 9 0 010 18z"
+                                                        ></path>
+                                                    </g>
+                                                </svg>
+                                            </button>
+                                        </td>
+                                        <td className="border-b-2 p-4 dark:border-dark-5">
+                                            <button>
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    width="25"
+                                                    height="25"
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    <path d="M20.7 5.2a1.024 1.024 0 010 1.448l-2.626 2.628-3.35-3.35L17.35 3.3a1.024 1.024 0 011.448 0zm-4.166 5.614l-3.35-3.35-8.509 8.511L3 21l5.025-1.675z"></path>
+                                                </svg>
+                                            </button>
+                                        </td>
+                                        <td className="border-b-2 p-4 dark:border-dark-5">
+                                            <button>
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    width="25"
+                                                    height="25"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    <g>
+                                                        <path
+                                                            stroke="#000"
+                                                            strokeLinecap="round"
+                                                            strokeLinejoin="round"
+                                                            strokeWidth="2"
+                                                            d="M14 10v7m-4-7v7M6 6v11.8c0 1.12 0 1.68.218 2.108a2 2 0 00.874.874c.427.218.987.218 2.105.218h5.606c1.118 0 1.677 0 2.104-.218.377-.192.683-.498.875-.874.218-.428.218-.987.218-2.105V6M6 6h2M6 6H4m4 0h8M8 6c0-.932 0-1.398.152-1.765a2 2 0 011.082-1.083C9.602 3 10.068 3 11 3h2c.932 0 1.398 0 1.765.152a2 2 0 011.083 1.083C16 4.602 16 5.068 16 6m0 0h2m0 0h2"
+                                                        ></path>
+                                                    </g>
+                                                </svg>
+                                            </button>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -52,7 +52,7 @@ export default function Header() {
                         <div className="md:hidden">
                             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                                 <button>
-                                    <Link href="/">
+                                    <Link href="/admin">
                                         <div className='border-2 rounded-full bg-gray-100'>
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
