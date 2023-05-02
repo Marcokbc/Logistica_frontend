@@ -3,10 +3,14 @@ import { useState } from "react";
 import ModalDelete from "../components/ModalDelete";
 import Footer from "../footer";
 import Header from "../header";
+import ModalCreate from "../components/ModalCreate";
 
 export default function Admin() {
     const [showModalDelete,setShowModalDelete] = useState(false);
-    const handleClose = () => setShowModalDelete(false);
+    const handleCloseDelete = () => setShowModalDelete(false);
+
+    const [showModalCreate,setShowModalCreate] = useState(false);
+    const handleCloseCreate = () => setShowModalCreate(false);
     
     return (
         <>
@@ -78,7 +82,9 @@ export default function Admin() {
                                             </button>
                                         </td>
                                         <td className="border-b-2 p-4 dark:border-dark-5">
-                                            <button>
+                                            <button
+                                                onClick={()=>setShowModalCreate(true)}
+                                            >
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg"
                                                     width="25"
@@ -182,7 +188,8 @@ export default function Admin() {
             </main>
             <Footer />
 
-            <ModalDelete onCLose={handleClose} isVisible={showModalDelete}/>
+            <ModalDelete onCLose={handleCloseDelete} isVisible={showModalDelete}/>
+            <ModalCreate onClose={handleCloseCreate} isVisible={showModalCreate}/>
 
         </>
     )
