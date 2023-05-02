@@ -1,6 +1,7 @@
 import Header from '../header';
 import Background from '../../../public/images/logistica-background.jpg';
 import Image from 'next/image';
+import Footer from '../footer';
 
 export default function SignUp() {
     return (
@@ -78,6 +79,7 @@ export default function SignUp() {
                     </div>
                 </div>
             </main>
+            <Footer />
         </>
     )
 }

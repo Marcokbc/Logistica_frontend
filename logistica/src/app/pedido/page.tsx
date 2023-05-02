@@ -1,3 +1,4 @@
+import Footer from '../footer';
 import Header from '../header';
 
 export default function Pedido() {
@@ -110,8 +111,9 @@ export default function Pedido() {
                         </div>
                     </div>
                 </div>
-                
+
             </main>
+            <Footer />
         </>
     )
 }

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Header from '../header';
 import ImageLogistic from '../../../public/images/logistic.png';
 import Image from 'next/image';
+import Footer from '../footer';
 
 export default function Signin() {
     return (
@@ -90,14 +91,15 @@ export default function Signin() {
                         </div>
                     </div>
                     <div className="w-1/2 shadow-2xl hidden md:flex flex-col justify-center items-center">
-                        <Image 
-                        src={ImageLogistic} 
-                        alt="Picture of the author"
-                        className=''
+                        <Image
+                            src={ImageLogistic}
+                            alt="Picture of the author"
+                            className=''
                         />
                     </div>
                 </div>
             </main>
+            <Footer />
         </>
     )
 }

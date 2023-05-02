@@ -1,9 +1,9 @@
 import Link from "next/link";
 
-export default function header() {
+export default function Header() {
     return (
         <>
-            <header className="relative">
+            <header className="relative z-40">
                 <div className="fixed top-0 left-0 right-0">
                     <nav className="bg-white dark:bg-gray-800  shadow ">
                         <div className="px-8 mx-auto max-w-7xl">
