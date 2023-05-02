@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Header from '../header';
-import ImageLogistic from '../../../public/images/logistic.png';
+import ImageLogistic from '../../../../public/images/logistic.png';
 import Image from 'next/image';
 import Footer from '../footer';
 

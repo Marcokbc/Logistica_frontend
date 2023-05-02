@@ -1,5 +1,5 @@
 import Header from '../header';
-import Background from '../../../public/images/logistica-background.jpg';
+import Background from '../../../../public/images/logistica-background.jpg';
 import Image from 'next/image';
 import Footer from '../footer';
 

@@ -9,7 +9,7 @@ export default function Footer() {
                         <div className="flex items-center justify-center gap-10 flex-1 mt-4 border-gray-100 md:mt-0 md:border-r">
                             <a
                                 className="hover:text-primary-gray-20"
-                                href="https://github.com/Charlie85270/tail-kit"
+                                href="https://github.com/Marcokbc"
                             >
                                 <span className="sr-only">View on GitHub</span>
                                 <svg
@@ -24,7 +24,7 @@ export default function Footer() {
                                 </svg>
                             </a>
                             <a
-                                href="#"
+                                href="https://twitter.com/bymarcodev"
                                 className="text-gray-400 transition-colors duration-200 hover:text-gray-800 dark:hover:text-white"
                             >
                                 <svg
@@ -39,7 +39,7 @@ export default function Footer() {
                                 </svg>
                             </a>
                             <a
-                                href="#"
+                                href="https://www.linkedin.com/in/marco-antônio-meira-dev"
                                 className="text-gray-400 transition-colors duration-200 hover:text-gray-800 dark:hover:text-white"
                             >
                                 <svg
@@ -61,7 +61,7 @@ export default function Footer() {
                                 Created by
                                 <a
                                     className="underline hover:text-primary-gray-20"
-                                    href="https://www.linkedin.com/in/crabiller/"
+                                    href="https://www.linkedin.com/in/marco-antônio-meira-dev/"
                                 >
                                     Marco
                                 </a>
