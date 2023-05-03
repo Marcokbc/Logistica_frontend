@@ -4,12 +4,12 @@ import { useState } from "react";
 import ModalLogout from "./components/ModalLogout";
 
 export default function Header({ modalOn }: any) {
-
+    const [showSidebar, setShowSidebar] = useState(false);
     return (
         <>
             <header className="relative z-40">
                 <div className="fixed top-0 left-0 right-0">
-                    <nav className="bg-white dark:bg-gray-800  shadow ">
+                    <nav className={`bg-white dark:bg-gray-800 shadow ${showSidebar ? "translate-x-0 h-auto" : "h-16"}`}>
                         <div className="px-8 mx-auto max-w-7xl">
                             <div className="flex items-center justify-between h-16">
                                 <div className="w-full justify-between flex items-center font-extrabold text-gray-100">
@@ -72,7 +72,9 @@ export default function Header({ modalOn }: any) {
                                     </div>
                                 </div>
                                 <div className="flex -mr-2 md:hidden">
-                                    <button className="text-gray-800 dark:text-white hover:text-gray-300 inline-flex items-center justify-center p-2 rounded-md focus:outline-none">
+                                    <button
+                                        onClick={() => setShowSidebar(!showSidebar)}
+                                        className="text-gray-800 dark:text-white hover:text-gray-300 inline-flex items-center justify-center p-2 rounded-md focus:outline-none">
                                         <svg width="20" height="20" fill="currentColor" className="w-8 h-8" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M1664 1344v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45zm0-512v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45zm0-512v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45z">
                                             </path>
@@ -81,7 +83,7 @@ export default function Header({ modalOn }: any) {
                                 </div>
                             </div>
                         </div>
-                        <div className="md:hidden">
+                        <div className={`md:hidden ${showSidebar ? "translate-x-0 " : "translate-x-full"}`}>
                             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                                 <button
                                     onClick={() => modalOn(true)}
