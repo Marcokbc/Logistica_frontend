@@ -4,31 +4,50 @@ import ModalDelete from "../components/ModalDelete";
 import Footer from "../footer";
 import Header from "../header";
 import ModalCreate from "../components/ModalCreate";
+import ModalUpdate from "../components/ModalUpdate";
+import ModalRota from "../components/ModalRota";
+import ModalLogout from "../components/ModalLogout";
 
 export default function Admin() {
-    const [showModalDelete,setShowModalDelete] = useState(false);
+    const [showModalDelete, setShowModalDelete] = useState(false);
     const handleCloseDelete = () => setShowModalDelete(false);
 
-    const [showModalCreate,setShowModalCreate] = useState(false);
+    const [showModalCreate, setShowModalCreate] = useState(false);
     const handleCloseCreate = () => setShowModalCreate(false);
-    
+
+    const [showModalUpdate, setShowModalUpdate] = useState(false);
+    const handleCloseUpdate = () => setShowModalUpdate(false);
+
+    const [showModalRota, setShowModalRota] = useState(false);
+    const handleCloseRota = () => setShowModalRota(false);
+
+    const [showModalLogout, setShowModalLogout] = useState(false);
+
+    const modalOn = (modalOn : boolean) => {
+        setShowModalLogout(modalOn);
+    }
+
+    const modalOff = (modalOff: boolean) => {
+        setShowModalLogout(modalOff);
+    }
+
     return (
         <>
-            <Header />
+            <Header modalOn={modalOn}/>
             <main className='bg-gray-100'>
                 <div className="lg:mt-0 lg:flex-shrink-0">
-                    <div className="flex flex-col space-y-4 h-screen justify-center ">
-                        <div className="flex flex-col justify-center items-center text-center w-full mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
+                    <div className="flex flex-col space-y-4 h-screen justify-center items-center">
+                        <div className="overflow-auto flex flex-col justify-center items-center text-center w-full mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
                             <div className="flex flex-col justify-start items-start w-1/2">
                                 <button
                                     type="button"
                                     className="py-2 mb-2 px-4 content-start bg-gray-800 hover:bg-sky-700 focus:ring-sky-500 focus:ring-offset-sky-200 text-white w-18 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+                                    onClick={() => setShowModalCreate(true)}
                                 >
                                     Create new Pedido
                                 </button>
                             </div>
-                            <table className="table p-4 bg-white rounded-lg shadow">
-
+                            <table className="table ml-44 sm:ml-0 p-4 bg-white rounded-lg shadow">
                                 <thead>
                                     <tr>
                                         <th className="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
@@ -61,7 +80,9 @@ export default function Admin() {
                                         <td className="border-b-2 p-4 dark:border-dark-5">Pedido Efetuado</td>
                                         <td className="border-b-2 p-4 dark:border-dark-5">Jl987</td>
                                         <td className="border-b-2 p-4 dark:border-dark-5">
-                                            <button>
+                                            <button
+                                                onClick={() => setShowModalRota(true)}
+                                            >
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg"
                                                     width="25"
@@ -83,7 +104,7 @@ export default function Admin() {
                                         </td>
                                         <td className="border-b-2 p-4 dark:border-dark-5">
                                             <button
-                                                onClick={()=>setShowModalCreate(true)}
+                                                onClick={() => setShowModalUpdate(true)}
                                             >
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg"
@@ -100,8 +121,8 @@ export default function Admin() {
                                                 type="button"
                                                 data-modal-target="popup-modal"
                                                 data-modal-toggle="popup-modal"
-                                                onClick={()=>setShowModalDelete(true)}
-                                                >
+                                                onClick={() => setShowModalDelete(true)}
+                                            >
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg"
                                                     width="25"
@@ -188,9 +209,11 @@ export default function Admin() {
             </main>
             <Footer />
 
-            <ModalDelete onCLose={handleCloseDelete} isVisible={showModalDelete}/>
-            <ModalCreate onClose={handleCloseCreate} isVisible={showModalCreate}/>
-
+            <ModalDelete onCLose={handleCloseDelete} isVisible={showModalDelete} />
+            <ModalCreate onClose={handleCloseCreate} isVisible={showModalCreate} />
+            <ModalUpdate onClose={handleCloseUpdate} isVisible={showModalUpdate} />
+            <ModalRota onClose={handleCloseRota} isVisible={showModalRota} />
+            <ModalLogout onClose={modalOff} isVisible={showModalLogout} />
         </>
     )
 }
