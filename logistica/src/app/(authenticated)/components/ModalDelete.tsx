@@ -7,9 +7,9 @@ export default function ModalDelete({isVisible, onCLose}: any) {
         <div
             id="popup-modal"
             tabIndex={-1}
-            className="fixed flex justify-center items-center z-50 backdrop-blur-sm p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
+            className="backdrop-blur-sm fixed left-0 p-4 top-0 z-50 h-[calc(100%-1rem)] w-full overflow-y-auto overflow-x-hidden outline-none"
         >
-            <div className="relative w-full max-w-md max-h-full">
+            <div className="relative w-full max-w-md max-h-full top-1/3 left-0 sm:left-1/3">
                 <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
                     <button
                         type="button"

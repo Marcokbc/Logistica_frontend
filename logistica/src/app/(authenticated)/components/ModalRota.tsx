@@ -7,13 +7,13 @@ export default function ModalRota({ isVisible, onClose }: any) {
         <div
             id="popup-modal"
             tabIndex={-1}
-            className="fixed flex justify-center items-center z-50 backdrop-blur-sm p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
+            className="fixed w-full top-0 left-0 sm:left-1/3 sm:top-0 z-50 backdrop-blur-sm p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
         >
             <div
                 id="authentication-modal"
                 tabIndex={-1}
                 aria-hidden="true"
-                className="fixed flex justify-center items-center z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
+                className="relative w-full max-w-md max-h-full top-1/3 left-0 sm:left-1/3 sm:top-1/3"
             >
                 <div className="relative w-full max-w-md max-h-full">
                     {/* Modal content */}
