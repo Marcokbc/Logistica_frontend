@@ -10,11 +10,16 @@ export default function ModalCreate({ isVisible, onClose }: any) {
 
     function handleChangeOrigem(event: any) {
         const cep = event.target.value;
-        axios.get(`https://viacep.com.br/ws/${cep}/json/`)
-            .then(response => {
-                console.log(response.data);
-                setOrigem(`${response.data.localidade} - ${response.data.uf}`);
-            });
+        if (cep.length == 9) {
+            axios.get(`https://viacep.com.br/ws/${cep}/json/`)
+                .then(response => {
+                    console.log(response.data);
+                    setOrigem(`${response.data.localidade} - ${response.data.uf}`);
+                }).catch((error) => {
+                    console.log('Whoops! Houve um erro.', error.message || error)
+                });
+        }
+
     }
 
     function handleChangeDestino(event: any) {
@@ -23,7 +28,9 @@ export default function ModalCreate({ isVisible, onClose }: any) {
             .then(response => {
                 console.log(response.data);
                 setDestino(`${response.data.localidade} - ${response.data.uf}`);
-            });
+            }).catch((error) => {
+                console.log('Whoops! Houve um erro.', error.message || error)
+            });;
     }
 
     if (!isVisible) return null;
@@ -89,6 +96,7 @@ export default function ModalCreate({ isVisible, onClose }: any) {
                                     >
                                         Origem
                                     </label>
+                                    <a href="https://buscacepinter.correios.com.br/app/endereco/index.php">Não sabe seu CEP?</a>
                                     <input
                                         name="origem"
                                         id="origem"
