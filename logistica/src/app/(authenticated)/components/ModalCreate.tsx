@@ -1,6 +1,31 @@
 'use client';
 
+import { useState } from "react";
+import axios from "axios";
+
 export default function ModalCreate({ isVisible, onClose }: any) {
+
+    const [origem, setOrigem] = useState('');
+    const [destino, setDestino] = useState('');
+
+    function handleChangeOrigem(event: any) {
+        const cep = event.target.value;
+        axios.get(`https://viacep.com.br/ws/${cep}/json/`)
+            .then(response => {
+                console.log(response.data);
+                setOrigem(`${response.data.localidade} - ${response.data.uf}`);
+            });
+    }
+
+    function handleChangeDestino(event: any) {
+        const cep = event.target.value;
+        axios.get(`https://viacep.com.br/ws/${cep}/json/`)
+            .then(response => {
+                console.log(response.data);
+                setDestino(`${response.data.localidade} - ${response.data.uf}`);
+            });
+    }
+
     if (!isVisible) return null;
 
     return (
@@ -64,24 +89,30 @@ export default function ModalCreate({ isVisible, onClose }: any) {
                                     >
                                         Origem
                                     </label>
-                                    <select
-                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
-                                        <option value="brumado">Brumado</option>
-                                        <option value="VCA">VCA</option>
-                                    </select>
+                                    <input
+                                        name="origem"
+                                        id="origem"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                        placeholder="Digite seu Cep..."
+                                        onChange={handleChangeOrigem}
+                                    />
+                                    <p>{origem}</p>
                                 </div>
                                 <div>
                                     <label
-                                        htmlFor="password"
+                                        htmlFor="destino"
                                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                                     >
                                         Destino
                                     </label>
-                                    <select
-                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
-                                        <option value="brumado">Brumado</option>
-                                        <option value="VCA">VCA</option>
-                                    </select>
+                                    <input
+                                        name="destino"
+                                        id="destino"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                        placeholder="Digite seu Cep..."
+                                        onChange={handleChangeDestino}
+                                    />
+                                    <p>{destino}</p>
                                 </div>
                                 <div>
                                     <label
