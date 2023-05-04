@@ -96,7 +96,12 @@ export default function ModalCreate({ isVisible, onClose }: any) {
                                     >
                                         Origem
                                     </label>
-                                    <a href="https://buscacepinter.correios.com.br/app/endereco/index.php">Não sabe seu CEP?</a>
+                                    <a
+                                        className="text-white"
+                                        href="https://buscacepinter.correios.com.br/app/endereco/index.php"
+                                    >
+                                        Não sabe seu CEP?
+                                    </a>
                                     <input
                                         name="origem"
                                         id="origem"
@@ -104,7 +109,7 @@ export default function ModalCreate({ isVisible, onClose }: any) {
                                         placeholder="Digite seu Cep..."
                                         onChange={handleChangeOrigem}
                                     />
-                                    <p>{origem}</p>
+                                    <p className="text-white">{origem}</p>
                                 </div>
                                 <div>
                                     <label
@@ -120,7 +125,7 @@ export default function ModalCreate({ isVisible, onClose }: any) {
                                         placeholder="Digite seu Cep..."
                                         onChange={handleChangeDestino}
                                     />
-                                    <p>{destino}</p>
+                                    <p className="text-white">{destino}</p>
                                 </div>
                                 <div>
                                     <label
