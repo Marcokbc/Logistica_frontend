@@ -58,7 +58,7 @@ export default function Footer() {
                         <div className="flex flex-col items-center justify-center flex-1 mt-7 md:mt-0 md:items-start md:pl-5">
                             <span className="">© 2023</span>
                             <span className="mt-7 md:mt-1">
-                                Created by
+                                Created by 
                                 <a
                                     className="underline hover:text-primary-gray-20"
                                     href="https://www.linkedin.com/in/marco-antônio-meira-dev"

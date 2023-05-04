@@ -1,6 +1,24 @@
 'use client';
 
+import { useState } from "react";
+import axios from "axios";
+
 export default function ModalRota({ isVisible, onClose }: any) {
+    const [local, setLocal] = useState('');
+
+    function handleChangeLocal(event: any) {
+        const cep = event.target.value;
+        if (cep.length == 9) {
+            axios.get(`https://viacep.com.br/ws/${cep}/json/`)
+                .then(response => {
+                    console.log(response.data);
+                    setLocal(`${response.data.localidade} - ${response.data.uf}`);
+                }).catch((error) => {
+                    console.log('Whoops! Houve um erro.', error.message || error)
+                });
+        }
+
+    }
     if (!isVisible) return null;
 
     return (
@@ -51,11 +69,14 @@ export default function ModalRota({ isVisible, onClose }: any) {
                                     >
                                         Local
                                     </label>
-                                    <select
-                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
-                                        <option value="brumado">Brumado</option>
-                                        <option value="VCA">VCA</option>
-                                    </select>
+                                    <input
+                                        name="origem"
+                                        id="origem"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                        placeholder="Digite seu Cep..."
+                                        onChange={handleChangeLocal}
+                                    />
+                                    <p className="text-white">{local}</p>
                                 </div>
                                 <div className="flex justify-between">
                                 </div>
