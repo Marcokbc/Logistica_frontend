@@ -7,7 +7,6 @@ import ModalCreate from "../components/ModalCreate";
 import ModalUpdate from "../components/ModalUpdate";
 import ModalRota from "../components/ModalRota";
 import ModalLogout from "../components/ModalLogout";
-import { getTeste } from "./services/get-teste";
 import axios from "axios";
 
 export default function Admin() {
