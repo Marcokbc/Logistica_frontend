@@ -4,6 +4,7 @@ import { useState } from "react";
 import ModalLogout from "./components/ModalLogout";
 
 export default function Header({ modalOn }: any) {
+    const username = localStorage.getItem('userName');
     const [showSidebar, setShowSidebar] = useState(false);
     return (
         <>
@@ -33,7 +34,7 @@ export default function Header({ modalOn }: any) {
                                         </Link>
                                     </button>
 
-                                    <h1>Bem vindo, USERNAME</h1>
+                                    <h1>Bem vindo, {username}</h1>
                                     <div className="hidden md:block">
                                         <div className="flex items-baseline ml-10 space-x-4">
                                             <button

@@ -1,7 +1,22 @@
 'use client';
 
+import { useRouter } from "next/navigation";
+
 export default function ModalLogout({ isVisible, onClose }: any) {
+    const router = useRouter();
     if (!isVisible) return null;
+
+    async function logout(){
+        try{
+           localStorage.clear();
+           localStorage.setItem('token','');
+           router.push('/'); 
+           onClose(false);
+        }catch(err){
+         alert('Não foi possível fazer o logout' + err);
+         onClose(false);
+        }
+      }
 
     return (
         <div
@@ -55,7 +70,7 @@ export default function ModalLogout({ isVisible, onClose }: any) {
                             data-modal-hide="popup-modal"
                             type="button"
                             className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"
-                            onClick={() => onClose(false)}
+                            onClick={() => logout()}
                         >
                             Yes, I'm sure
                         </button>

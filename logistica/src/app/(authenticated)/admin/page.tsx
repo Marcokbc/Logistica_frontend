@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ModalDelete from "../components/ModalDelete";
 import Footer from "../footer";
 import Header from "../header";
@@ -8,8 +8,17 @@ import ModalUpdate from "../components/ModalUpdate";
 import ModalRota from "../components/ModalRota";
 import ModalLogout from "../components/ModalLogout";
 import axios from "axios";
+import api from "@/app/services/api";
 
 export default function Admin() {
+    const token = localStorage.getItem('token');
+
+    const authorization = {
+        headers : {
+          Authorization : `Bearer ${token}`
+        }
+    }
+
     const [showModalDelete, setShowModalDelete] = useState(false);
     const handleCloseDelete = () => setShowModalDelete(false);
 
@@ -24,6 +33,8 @@ export default function Admin() {
 
     const [showModalLogout, setShowModalLogout] = useState(false);
 
+    const [orders, setOrders] = useState([]);
+
     const modalOn = (modalOn : boolean) => {
         setShowModalLogout(modalOn);
     }
@@ -32,6 +43,11 @@ export default function Admin() {
         setShowModalLogout(modalOff);
     }
    
+    // useEffect( ()=> {
+    //     api.get('',authorization).then(
+    //       response => {setOrders(response.data);
+    //      }, token)
+    //   })
 
     return (
         <>
