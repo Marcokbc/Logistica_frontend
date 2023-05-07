@@ -1,9 +1,34 @@
+'use client';
 import Header from '../header';
 import Background from '../../../../public/images/logistica-background.jpg';
 import Image from 'next/image';
 import Footer from '../footer';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import api from '@/app/services/api';
 
 export default function SignUp() {
+    const [userName, setUsername] = useState('');
+    const [email,setEmail]= useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const router = useRouter();
+
+    async function login(event: any) {
+        event.preventDefault();
+
+        const data = {
+            userName, email, password, confirmPassword
+        };
+
+        try {
+            const response = await api.post('api/Account/CreateUser', data);
+
+            router.push('/signin');
+        } catch (error) {
+            alert('O login falhou ' + error)
+        }
+    }
     return (
         <>
             <Header />
@@ -22,7 +47,7 @@ export default function SignUp() {
                     <div className="container flex items-center justify-center flex-1 h-full mx-auto">
                         <div className="w-full max-w-lg">
                             <div className="leading-loose">
-                                <form className="max-w-sm p-10 m-auto rounded shadow-xl bg-white/25">
+                                <form onSubmit={login} className="max-w-sm p-10 m-auto rounded shadow-xl bg-white/25">
                                     <div className='flex flex-col justify-center items-center'>
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
@@ -47,20 +72,32 @@ export default function SignUp() {
                                     </p>
                                     <div className="mb-2">
                                         <div className=" relative ">
-                                            <input type="text" id="login-with-bg-email" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Username" />
+                                            <input 
+                                            value={userName}
+                                            onChange={e => setUsername(e.target.value)}
+                                            type="text" id="login-with-bg-email" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Username" />
                                         </div>
                                     </div>
                                     <div className="mb-2">
                                         <div className=" relative ">
-                                            <input type="text" id="login-with-bg-password" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="E-mail" />
+                                            <input 
+                                            value={email}
+                                            onChange={e => setEmail(e.target.value)}
+                                            type="text" id="login-with-bg-password" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="E-mail" />
                                         </div>
                                     </div>
                                     <div className="flex gap-4 mb-2">
                                         <div className=" relative ">
-                                            <input type="password" id="login-with-bg-password" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Password" />
+                                            <input 
+                                            value={password}
+                                            onChange={e => setPassword(e.target.value)}
+                                            type="password" id="login-with-bg-password" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Password" />
                                         </div>
                                         <div className=" relative ">
-                                            <input type="password" id="login-with-bg-password" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Confirm Password" />
+                                            <input 
+                                            value={confirmPassword}
+                                            onChange={e => setConfirmPassword(e.target.value)}
+                                            type="password" id="login-with-bg-password" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Confirm Password" />
                                         </div>
                                     </div>
                                     <div className="flex items-center justify-between mt-4">
