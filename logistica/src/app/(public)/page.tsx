@@ -1,9 +1,34 @@
+'use client';
 import Image from 'next/image';
 import Header from './header';
 import Link from 'next/link';
 import Footer from './footer';
+import api from '../services/api';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 export default function Home() {
+  const [order, setOrder] = useState('');
+  const router = useRouter();
+
+  function handleChangeOrder(event: any) {
+    setOrder(event.target.value);
+  }
+
+  async function findOrderByCode(code: string) {
+
+    try {
+
+      const response = await api.get(`api/Pedido/codigo/${code}`);
+
+      const id = response.data.id;
+      // localStorage.setItem('id', response.data.id);
+
+      router.push(`/pedido/${id}`);
+    } catch (error) {
+      alert('A requisição falhou ' + error);
+    }
+  }
   return (
     <>
       <body>
@@ -38,17 +63,17 @@ export default function Home() {
                     id="find-with-icon"
                     className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                     name="codigo"
+                    onChange={handleChangeOrder}
                     placeholder="DIGITE O CODIGO..."
                   />
                 </div>
-                <Link href="/pedido">
-                  <button
-                    type="button"
-                    className=" pg-2 py-2 px-4  bg-white dark:bg-gray-800 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-w-1/6 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
-                  >
-                    Find
-                  </button>
-                </Link>
+                <button
+                  type="button"
+                  onClick={() => (findOrderByCode(order))}
+                  className=" pg-2 py-2 px-4  bg-white dark:bg-gray-800 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-w-1/6 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+                >
+                  Find
+                </button>
               </div>
             </div>
           </div>
