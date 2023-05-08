@@ -2,11 +2,39 @@
 
 import { useState } from "react";
 import axios from "axios";
+import api from "@/app/services/api";
 
 export default function ModalCreate({ isVisible, onClose }: any) {
 
+    const [nome, setNome] = useState('');
     const [origem, setOrigem] = useState('');
     const [destino, setDestino] = useState('');
+    const [status, setStatus] = useState('PedidoEfetuado');
+
+    const token = localStorage.getItem('token');
+    const authorization = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+
+    async function save(event: any) {
+        event.preventDefault();
+
+        const data = {
+            nome,
+            origem,
+            destino,
+            status
+        }
+
+        try {
+            console.log(data);
+            await api.post('api/Pedido', data, authorization);
+        } catch (error) {
+            alert(error);
+        }
+    }
 
     function handleChangeOrigem(event: any) {
         const cep = event.target.value;
@@ -75,7 +103,7 @@ export default function ModalCreate({ isVisible, onClose }: any) {
                             <h3 className="mb-4 text-xl font-medium text-gray-900 dark:text-white">
                                 Create Order
                             </h3>
-                            <form className="space-y-6" action="#">
+                            <form className="space-y-6" action="#" onSubmit={(e)=> {save(e); return onClose()}}>
                                 <div>
                                     <label
                                         htmlFor="email"
@@ -88,6 +116,7 @@ export default function ModalCreate({ isVisible, onClose }: any) {
                                         id="name"
                                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                         placeholder="Oder"
+                                        onChange={e => setNome(e.target.value)}
                                     />
                                 </div>
                                 <div>
@@ -135,8 +164,14 @@ export default function ModalCreate({ isVisible, onClose }: any) {
                                         Status
                                     </label>
                                     <select
+                                        onChange={(e) => setStatus(e.target.value)}
+                                        value={status}
                                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
-                                        <option value="Pedido">Pedido Efetuado</option>
+                                        <option value="PedidoEfetuado">Pedido Efetuado</option>
+                                        <option value="Enviado">Enviado</option>
+                                        <option value="Transito">Transito</option>
+                                        <option value="Despachado">Despachado</option>
+                                        <option value="Retirado">Retirado</option>
                                     </select>
                                 </div>
                                 <div className="flex justify-between">
@@ -144,7 +179,6 @@ export default function ModalCreate({ isVisible, onClose }: any) {
                                 <button
                                     type="submit"
                                     className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                    onClick={onClose}
                                 >
                                     Create
                                 </button>
