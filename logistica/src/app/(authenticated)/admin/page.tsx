@@ -30,8 +30,8 @@ export default function Admin() {
     const [showModalCreate, setShowModalCreate] = useState(false);
     const handleCloseCreate = () => setShowModalCreate(false);
 
-    const [showModalUpdate, setShowModalUpdate] = useState(false);
-    const handleCloseUpdate = () => setShowModalUpdate(false);
+    const [showModalUpdate, setShowModalUpdate] = useState({ isOpen: false, pedidoId: 0 });
+    const handleCloseUpdate = () => setShowModalUpdate({ isOpen: false, pedidoId: 0 });
 
     const [showModalRota, setShowModalRota] = useState({isOpen:false,pedidoId:0});
     const handleCloseRota = () => setShowModalRota({ isOpen: false, pedidoId: 0 });
@@ -134,7 +134,7 @@ export default function Admin() {
                                             </td>
                                             <td className="border-b-2 p-4 dark:border-dark-5">
                                                 <button
-                                                    onClick={() => setShowModalUpdate(true)}
+                                                    onClick={() => setShowModalUpdate({ isOpen: true, pedidoId: pedido.id })}
                                                 >
                                                     <svg
                                                         xmlns="http://www.w3.org/2000/svg"
@@ -243,8 +243,10 @@ export default function Admin() {
             <ModalDelete 
             onClose={handleCloseDelete} isVisible={showModalDelete.isOpen} pedidoId={showModalDelete.pedidoId} />
             <ModalCreate onClose={handleCloseCreate} isVisible={showModalCreate} />
-            <ModalUpdate onClose={handleCloseUpdate} isVisible={showModalUpdate} />
-            <ModalRota onClose={handleCloseRota} isVisible={showModalRota.isOpen} pedidoId={showModalRota.pedidoId}/>
+            <ModalUpdate 
+            onClose={handleCloseUpdate} isVisible={showModalUpdate.isOpen} pedidoId={showModalUpdate.pedidoId}/>
+            <ModalRota 
+            onClose={handleCloseRota} isVisible={showModalRota.isOpen} pedidoId={showModalRota.pedidoId}/>
             <ModalLogout onClose={modalOff} isVisible={showModalLogout} />
         </>
     )
