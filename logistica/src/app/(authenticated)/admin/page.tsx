@@ -15,7 +15,8 @@ import { Order } from "@/app/models/Order";
 export default function Admin() {
     const [pedidos, setPedidos] = useState<Order>();
     const [pageNumber, setPageNumber] = useState(1);
-    const [pageSize, setPageSize] = useState(4);
+    const [pageSize, setPageSize] = useState(2);
+    const [totalPages, setTotalPages] = useState(0);
     const token = localStorage.getItem('token');
 
     const authorization = {
@@ -33,7 +34,7 @@ export default function Admin() {
     const [showModalUpdate, setShowModalUpdate] = useState({ isOpen: false, pedidoId: 0 });
     const handleCloseUpdate = () => setShowModalUpdate({ isOpen: false, pedidoId: 0 });
 
-    const [showModalRota, setShowModalRota] = useState({isOpen:false,pedidoId:0});
+    const [showModalRota, setShowModalRota] = useState({ isOpen: false, pedidoId: 0 });
     const handleCloseRota = () => setShowModalRota({ isOpen: false, pedidoId: 0 });
 
     const [showModalLogout, setShowModalLogout] = useState(false);
@@ -54,11 +55,26 @@ export default function Admin() {
             .then(
                 response => {
                     setPedidos(response.data.items);
-                    // console.log(response.data);
+                    setTotalPages(response.data.totalPages);
+                    // console.log(response.data.totalPages);
                 });
     } catch (error) {
         console.log(error);
     }
+
+    const renderButtons = () => {
+        const buttons = [];
+        for (let i = 1; i <= totalPages; i++) {
+            buttons.push(<button
+                type="button"
+                onClick={() => setPageNumber(i)}
+                className="w-full px-4 py-2 text-base text-indigo-500 bg-white border hover:bg-gray-100"
+            >
+                {i}
+            </button>);
+        }
+        return buttons;
+    };
 
     return (
         <>
@@ -111,7 +127,7 @@ export default function Admin() {
                                             <td className="border-b-2 p-4 dark:border-dark-5">{pedido.codigoRastreio}</td>
                                             <td className="border-b-2 p-4 dark:border-dark-5">
                                                 <button
-                                                    onClick={() => setShowModalRota({isOpen: true, pedidoId: pedido.id})}
+                                                    onClick={() => setShowModalRota({ isOpen: true, pedidoId: pedido.id })}
                                                 >
                                                     <svg
                                                         xmlns="http://www.w3.org/2000/svg"
@@ -179,6 +195,7 @@ export default function Admin() {
                             <div className="flex flex-col items-center px-5 py-5 xs:flex-row xs:justify-between">
                                 <div className="flex items-center">
                                     <button
+                                        onClick={() => { pageNumber > 1 ? setPageNumber(pageNumber - 1) : setPageNumber(pageNumber) }}
                                         type="button"
                                         className="w-full p-4 text-base text-gray-600 bg-white border rounded-l-xl hover:bg-gray-100"
                                     >
@@ -193,33 +210,11 @@ export default function Admin() {
                                             <path d="M1427 301l-531 531 531 531q19 19 19 45t-19 45l-166 166q-19 19-45 19t-45-19l-742-742q-19-19-19-45t19-45l742-742q19-19 45-19t45 19l166 166q19 19 19 45t-19 45z"></path>
                                         </svg>
                                     </button>
+                                    {renderButtons()}
                                     <button
                                         type="button"
-                                        className="w-full px-4 py-2 text-base text-indigo-500 bg-white border-t border-b hover:bg-gray-100 "
-                                    >
-                                        1
-                                    </button>
-                                    <button
-                                        type="button"
-                                        className="w-full px-4 py-2 text-base text-gray-600 bg-white border hover:bg-gray-100"
-                                    >
-                                        2
-                                    </button>
-                                    <button
-                                        type="button"
-                                        className="w-full px-4 py-2 text-base text-gray-600 bg-white border-t border-b hover:bg-gray-100"
-                                    >
-                                        3
-                                    </button>
-                                    <button
-                                        type="button"
-                                        className="w-full px-4 py-2 text-base text-gray-600 bg-white border hover:bg-gray-100"
-                                    >
-                                        4
-                                    </button>
-                                    <button
-                                        type="button"
-                                        className="w-full p-4 text-base text-gray-600 bg-white border-t border-b border-r rounded-r-xl hover:bg-gray-100"
+                                        onClick={() => { pageNumber < totalPages ? setPageNumber(pageNumber + 1) : setPageNumber(pageNumber)}}
+                                        className="w-full p-4 text-base text-gray-600 bg-white border rounded-r-xl hover:bg-gray-100"
                                     >
                                         <svg
                                             width={9}
@@ -240,13 +235,13 @@ export default function Admin() {
             </main>
             <Footer />
 
-            <ModalDelete 
-            onClose={handleCloseDelete} isVisible={showModalDelete.isOpen} pedidoId={showModalDelete.pedidoId} />
+            <ModalDelete
+                onClose={handleCloseDelete} isVisible={showModalDelete.isOpen} pedidoId={showModalDelete.pedidoId} />
             <ModalCreate onClose={handleCloseCreate} isVisible={showModalCreate} />
-            <ModalUpdate 
-            onClose={handleCloseUpdate} isVisible={showModalUpdate.isOpen} pedidoId={showModalUpdate.pedidoId}/>
-            <ModalRota 
-            onClose={handleCloseRota} isVisible={showModalRota.isOpen} pedidoId={showModalRota.pedidoId}/>
+            <ModalUpdate
+                onClose={handleCloseUpdate} isVisible={showModalUpdate.isOpen} pedidoId={showModalUpdate.pedidoId} />
+            <ModalRota
+                onClose={handleCloseRota} isVisible={showModalRota.isOpen} pedidoId={showModalRota.pedidoId} />
             <ModalLogout onClose={modalOff} isVisible={showModalLogout} />
         </>
     )
