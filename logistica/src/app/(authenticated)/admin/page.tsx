@@ -15,7 +15,7 @@ import { Order } from "@/app/models/Order";
 export default function Admin() {
     const [pedidos, setPedidos] = useState<Order>();
     const [pageNumber, setPageNumber] = useState(1);
-    const [pageSize, setPageSize] = useState(5);
+    const [pageSize, setPageSize] = useState(4);
     const token = localStorage.getItem('token');
 
     const authorization = {
@@ -24,8 +24,8 @@ export default function Admin() {
         }
     }
 
-    const [showModalDelete, setShowModalDelete] = useState(false);
-    const handleCloseDelete = () => setShowModalDelete(false);
+    const [showModalDelete, setShowModalDelete] = useState({ isOpen: false, pedidoId: 0 });
+    const handleCloseDelete = () => setShowModalDelete({ isOpen: false, pedidoId: 0 });
 
     const [showModalCreate, setShowModalCreate] = useState(false);
     const handleCloseCreate = () => setShowModalCreate(false);
@@ -40,6 +40,7 @@ export default function Admin() {
 
     const [orders, setOrders] = useState([]);
 
+
     const modalOn = (modalOn: boolean) => {
         setShowModalLogout(modalOn);
     }
@@ -53,7 +54,7 @@ export default function Admin() {
             .then(
                 response => {
                     setPedidos(response.data.items);
-                    console.log(response.data);
+                    // console.log(response.data);
                 });
     } catch (error) {
         console.log(error);
@@ -66,7 +67,7 @@ export default function Admin() {
                 <div className="lg:mt-0 lg:flex-shrink-0">
                     <div className="flex flex-col space-y-4 h-screen justify-center items-center">
                         <div className="overflow-auto flex flex-col justify-center items-center text-center w-full mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
-                            <div className="flex flex-col justify-start items-start w-1/2">
+                            <div className="flex flex-col justify-start items-start">
                                 <button
                                     type="button"
                                     className="py-2 mb-2 px-4 content-start bg-gray-800 hover:bg-sky-700 focus:ring-sky-500 focus:ring-offset-sky-200 text-white w-18 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
@@ -150,7 +151,7 @@ export default function Admin() {
                                                     type="button"
                                                     data-modal-target="popup-modal"
                                                     data-modal-toggle="popup-modal"
-                                                    onClick={() => setShowModalDelete(true)}
+                                                    onClick={() => setShowModalDelete({ isOpen: true, pedidoId: pedido.id })}
                                                 >
                                                     <svg
                                                         xmlns="http://www.w3.org/2000/svg"
@@ -239,7 +240,8 @@ export default function Admin() {
             </main>
             <Footer />
 
-            <ModalDelete onCLose={handleCloseDelete} isVisible={showModalDelete} />
+            <ModalDelete 
+            onClose={handleCloseDelete} isVisible={showModalDelete.isOpen} pedidoId={showModalDelete.pedidoId} />
             <ModalCreate onClose={handleCloseCreate} isVisible={showModalCreate} />
             <ModalUpdate onClose={handleCloseUpdate} isVisible={showModalUpdate} />
             <ModalRota onClose={handleCloseRota} isVisible={showModalRota} />
