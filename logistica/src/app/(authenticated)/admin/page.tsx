@@ -33,8 +33,8 @@ export default function Admin() {
     const [showModalUpdate, setShowModalUpdate] = useState(false);
     const handleCloseUpdate = () => setShowModalUpdate(false);
 
-    const [showModalRota, setShowModalRota] = useState(false);
-    const handleCloseRota = () => setShowModalRota(false);
+    const [showModalRota, setShowModalRota] = useState({isOpen:false,pedidoId:0});
+    const handleCloseRota = () => setShowModalRota({ isOpen: false, pedidoId: 0 });
 
     const [showModalLogout, setShowModalLogout] = useState(false);
 
@@ -111,7 +111,7 @@ export default function Admin() {
                                             <td className="border-b-2 p-4 dark:border-dark-5">{pedido.codigoRastreio}</td>
                                             <td className="border-b-2 p-4 dark:border-dark-5">
                                                 <button
-                                                    onClick={() => setShowModalRota(true)}
+                                                    onClick={() => setShowModalRota({isOpen: true, pedidoId: pedido.id})}
                                                 >
                                                     <svg
                                                         xmlns="http://www.w3.org/2000/svg"
@@ -244,7 +244,7 @@ export default function Admin() {
             onClose={handleCloseDelete} isVisible={showModalDelete.isOpen} pedidoId={showModalDelete.pedidoId} />
             <ModalCreate onClose={handleCloseCreate} isVisible={showModalCreate} />
             <ModalUpdate onClose={handleCloseUpdate} isVisible={showModalUpdate} />
-            <ModalRota onClose={handleCloseRota} isVisible={showModalRota} />
+            <ModalRota onClose={handleCloseRota} isVisible={showModalRota.isOpen} pedidoId={showModalRota.pedidoId}/>
             <ModalLogout onClose={modalOff} isVisible={showModalLogout} />
         </>
     )
