@@ -1,4 +1,7 @@
+'use client';
 import './globals.css'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 export const metadata = {
   title: 'Next.js',
@@ -13,6 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>{children}</body>
+      <ToastContainer />
     </html>
   )
 }

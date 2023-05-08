@@ -1,6 +1,9 @@
 'use client';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import api from "@/app/services/api";
+
 
 export default function ModalDelete({ isVisible, onClose, pedidoId }: any) {
     const token = localStorage.getItem('token');
@@ -15,7 +18,11 @@ export default function ModalDelete({ isVisible, onClose, pedidoId }: any) {
 
     async function deleteOrder() {
         try {
-            await api.delete(`api/Pedido/${pedidoId}`, authorization);
+            await api.delete(`api/Pedido/${pedidoId}`, authorization)
+                .then(response => {
+                    toast.info("Venda Excluida com sucesso!");
+                });
+                
         } catch (error) {
             alert(error);
         }
@@ -74,7 +81,7 @@ export default function ModalDelete({ isVisible, onClose, pedidoId }: any) {
                             data-modal-hide="popup-modal"
                             type="button"
                             className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"
-                            onClick={() => {deleteOrder(); return onClose()}}
+                            onClick={() => { deleteOrder(); return onClose() }}
                         >
                             Yes, I'm sure
                         </button>

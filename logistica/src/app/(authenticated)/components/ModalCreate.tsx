@@ -1,5 +1,7 @@
 'use client';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useState } from "react";
 import axios from "axios";
 import api from "@/app/services/api";
@@ -30,7 +32,10 @@ export default function ModalCreate({ isVisible, onClose }: any) {
 
         try {
             console.log(data);
-            await api.post('api/Pedido', data, authorization);
+            await api.post('api/Pedido', data, authorization)
+            .then(response => {
+                toast.info("Pedido excluido com sucesso.");
+            })
         } catch (error) {
             alert(error);
         }

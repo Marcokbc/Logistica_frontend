@@ -6,10 +6,12 @@ import Footer from '../footer';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import api from '@/app/services/api';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function SignUp() {
     const [userName, setUsername] = useState('');
-    const [email,setEmail]= useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const router = useRouter();
@@ -22,7 +24,10 @@ export default function SignUp() {
         };
 
         try {
-            const response = await api.post('api/Account/CreateUser', data);
+            const response = await api.post('api/Account/CreateUser', data)
+                .then(response => {
+                    toast.info("Conta Criada com Sucesso");
+                });
 
             router.push('/signin');
         } catch (error) {
@@ -72,32 +77,32 @@ export default function SignUp() {
                                     </p>
                                     <div className="mb-2">
                                         <div className=" relative ">
-                                            <input 
-                                            value={userName}
-                                            onChange={e => setUsername(e.target.value)}
-                                            type="text" id="login-with-bg-email" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Username" />
+                                            <input
+                                                value={userName}
+                                                onChange={e => setUsername(e.target.value)}
+                                                type="text" id="login-with-bg-email" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Username" />
                                         </div>
                                     </div>
                                     <div className="mb-2">
                                         <div className=" relative ">
-                                            <input 
-                                            value={email}
-                                            onChange={e => setEmail(e.target.value)}
-                                            type="text" id="login-with-bg-password" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="E-mail" />
+                                            <input
+                                                value={email}
+                                                onChange={e => setEmail(e.target.value)}
+                                                type="text" id="login-with-bg-password" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="E-mail" />
                                         </div>
                                     </div>
                                     <div className="flex gap-4 mb-2">
                                         <div className=" relative ">
-                                            <input 
-                                            value={password}
-                                            onChange={e => setPassword(e.target.value)}
-                                            type="password" id="login-with-bg-password" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Password" />
+                                            <input
+                                                value={password}
+                                                onChange={e => setPassword(e.target.value)}
+                                                type="password" id="login-with-bg-password" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Password" />
                                         </div>
                                         <div className=" relative ">
-                                            <input 
-                                            value={confirmPassword}
-                                            onChange={e => setConfirmPassword(e.target.value)}
-                                            type="password" id="login-with-bg-password" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Confirm Password" />
+                                            <input
+                                                value={confirmPassword}
+                                                onChange={e => setConfirmPassword(e.target.value)}
+                                                type="password" id="login-with-bg-password" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Confirm Password" />
                                         </div>
                                     </div>
                                     <div className="flex items-center justify-between mt-4">

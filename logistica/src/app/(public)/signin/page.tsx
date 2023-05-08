@@ -8,6 +8,8 @@ import { useState } from 'react';
 import axios from 'axios';
 import api from '@/app/services/api';
 import { useRouter } from 'next/navigation';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Signin() {
     const [userName, setUsername] = useState('');
@@ -30,6 +32,7 @@ export default function Signin() {
             localStorage.setItem('expiration', response.data.expiration);
 
             router.push('/admin');
+            toast.info('Login realizado com sucesso.');
         } catch (error) {
             alert('O login falhou ' + error)
         }

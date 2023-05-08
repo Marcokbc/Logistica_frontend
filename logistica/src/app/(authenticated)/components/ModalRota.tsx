@@ -3,6 +3,8 @@
 import { useState } from "react";
 import axios from "axios";
 import api from "@/app/services/api";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function ModalRota({ isVisible, onClose, pedidoId }: any) {
     const [local, setLocal] = useState('');
@@ -41,7 +43,10 @@ export default function ModalRota({ isVisible, onClose, pedidoId }: any) {
 
         try {
             console.log(data);
-            await api.post('api/Rota', data, authorization);
+            await api.post('api/Rota', data, authorization)
+                .then(response => {
+                    toast.info("Rota Adicionada com sucesso.");
+                })
         } catch (error) {
             alert(error);
         }

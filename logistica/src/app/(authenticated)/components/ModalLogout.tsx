@@ -1,22 +1,25 @@
 'use client';
 
 import { useRouter } from "next/navigation";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function ModalLogout({ isVisible, onClose }: any) {
     const router = useRouter();
     if (!isVisible) return null;
 
-    async function logout(){
-        try{
-           localStorage.clear();
-           localStorage.setItem('token','');
-           router.push('/'); 
-           onClose(false);
-        }catch(err){
-         alert('Não foi possível fazer o logout' + err);
-         onClose(false);
+    async function logout() {
+        try {
+            localStorage.clear();
+            localStorage.setItem('token', '');
+            router.push('/');
+            onClose(false);
+            toast.info('Logout realizado com sucesso');
+        } catch (err) {
+            alert('Não foi possível fazer o logout' + err);
+            onClose(false);
         }
-      }
+    }
 
     return (
         <div

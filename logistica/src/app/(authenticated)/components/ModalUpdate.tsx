@@ -3,6 +3,8 @@
 import { OrderById } from "@/app/models/OrderById";
 import api from "@/app/services/api";
 import { useState } from "react";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function ModalUpdate({ isVisible, onClose, pedidoId }: any) {
     const [pedido, setPedido] = useState<OrderById>();
@@ -41,7 +43,10 @@ export default function ModalUpdate({ isVisible, onClose, pedidoId }: any) {
 
         try {
             console.log(data);
-            await api.put(`api/Pedido/${pedidoId}`, data, authorization);
+            await api.put(`api/Pedido/${pedidoId}`, data, authorization)
+                .then(response => {
+                    toast.info("Pedido alterado com sucesso!");
+                })
         } catch (error) {
             alert(error);
         }
