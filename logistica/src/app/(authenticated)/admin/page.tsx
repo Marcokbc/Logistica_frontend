@@ -15,7 +15,7 @@ import { Order } from "@/app/models/Order";
 export default function Admin() {
     const [pedidos, setPedidos] = useState<Order>();
     const [pageNumber, setPageNumber] = useState(1);
-    const [pageSize, setPageSize] = useState(2);
+    const [pageSize, setPageSize] = useState(4);
     const [totalPages, setTotalPages] = useState(0);
     const token = localStorage.getItem('token');
 
@@ -83,7 +83,7 @@ export default function Admin() {
                 <div className="lg:mt-0 lg:flex-shrink-0">
                     <div className="flex flex-col space-y-4 h-screen justify-center items-center">
                         <div className="overflow-auto flex flex-col justify-center items-center text-center w-full mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
-                            <div className="flex flex-col justify-start items-start">
+                            <div className="flex flex-col justify-start items-start mt-48 sm:mt-0">
                                 <button
                                     type="button"
                                     className="py-2 mb-2 px-4 content-start bg-gray-800 hover:bg-sky-700 focus:ring-sky-500 focus:ring-offset-sky-200 text-white w-18 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
@@ -92,7 +92,7 @@ export default function Admin() {
                                     Create new Pedido
                                 </button>
                             </div>
-                            <table className="table ml-44 sm:ml-0 p-4 bg-white rounded-lg shadow">
+                            <table className="table ml-72 sm:ml-0 p-4 bg-white rounded-lg shadow">
                                 <thead>
                                     <tr>
                                         <th className="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">

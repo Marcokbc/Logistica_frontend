@@ -34,7 +34,7 @@ export default function Header({ modalOn }: any) {
                                         </Link>
                                     </button>
 
-                                    <h1>Bem vindo, {username}</h1>
+                                    <h1 className="ml-10 sm:ml-0">Bem vindo, {username}</h1>
                                     <div className="hidden md:block">
                                         <div className="flex items-baseline ml-10 space-x-4">
                                             <button
