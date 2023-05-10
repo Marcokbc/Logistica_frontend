@@ -40,6 +40,8 @@ export default function ModalCreate({ isVisible, onClose, validatePost }: any) {
                         toast.success("Pedido criado com sucesso.");
                         validatePost(true);
                         onClose();
+                        setOrigem('');
+                        setDestino('');
                     })
             } catch (error) {
                 alert(error);
@@ -53,7 +55,6 @@ export default function ModalCreate({ isVisible, onClose, validatePost }: any) {
         if (cep.length == 9) {
             axios.get(`https://viacep.com.br/ws/${cep}/json/`)
                 .then(response => {
-                    console.log(response.data);
                     setOrigem(`${response.data.localidade} - ${response.data.uf}`);
                 }).catch((error) => {
                     console.log('Whoops! Houve um erro.', error.message || error)
@@ -66,7 +67,6 @@ export default function ModalCreate({ isVisible, onClose, validatePost }: any) {
         const cep = event.target.value;
         axios.get(`https://viacep.com.br/ws/${cep}/json/`)
             .then(response => {
-                console.log(response.data);
                 setDestino(`${response.data.localidade} - ${response.data.uf}`);
             }).catch((error) => {
                 console.log('Whoops! Houve um erro.', error.message || error)
@@ -94,7 +94,7 @@ export default function ModalCreate({ isVisible, onClose, validatePost }: any) {
                             type="button"
                             className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
                             data-modal-hide="authentication-modal"
-                            onClick={onClose}
+                            onClick={()=>{onClose(); setDestino(''); setOrigem('');}}
                         >
                             <svg
                                 aria-hidden="true"

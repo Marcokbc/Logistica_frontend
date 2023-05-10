@@ -6,6 +6,7 @@ import Footer from './footer';
 import api from '../services/api';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 export default function Home() {
   const [order, setOrder] = useState('');
@@ -27,7 +28,7 @@ export default function Home() {
 
         router.push(`/pedido/${id}`);
       } catch (error) {
-        alert('A requisição falhou ' + error);
+        toast.error('Codigo Invalido' + error);
       }
     }
 
