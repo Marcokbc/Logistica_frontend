@@ -17,17 +17,20 @@ export default function Home() {
 
   async function findOrderByCode(code: string) {
 
-    try {
+    if (code) {
+      try {
 
-      const response = await api.get(`api/Pedido/codigo/${code}`);
+        const response = await api.get(`api/Pedido/codigo/${code}`);
 
-      const id = response.data.id;
-      // localStorage.setItem('id', response.data.id);
+        const id = response.data.id;
+        // localStorage.setItem('id', response.data.id);
 
-      router.push(`/pedido/${id}`);
-    } catch (error) {
-      alert('A requisição falhou ' + error);
+        router.push(`/pedido/${id}`);
+      } catch (error) {
+        alert('A requisição falhou ' + error);
+      }
     }
+
   }
   return (
     <>
