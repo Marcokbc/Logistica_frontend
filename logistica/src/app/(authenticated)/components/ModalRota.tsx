@@ -41,15 +41,22 @@ export default function ModalRota({ isVisible, onClose, pedidoId }: any) {
             idPedido: pedidoId,
         }
 
-        try {
-            console.log(data);
-            await api.post('api/Rota', data, authorization)
-                .then(response => {
-                    toast.info("Rota Adicionada com sucesso.");
-                })
-        } catch (error) {
-            alert(error);
+        if (!data.nomeCidade) {
+            toast.error("Informe a localização");
+        } else {
+            try {
+                console.log(data);
+                await api.post('api/Rota', data, authorization)
+                    .then(response => {
+                        toast.info("Rota Adicionada com sucesso.");
+                        onClose();
+                    })
+            } catch (error) {
+                alert(error);
+            }
         }
+
+
     }
     if (!isVisible) return null;
 
@@ -95,7 +102,7 @@ export default function ModalRota({ isVisible, onClose, pedidoId }: any) {
                             <h3 className="mb-4 text-xl font-medium text-gray-900 dark:text-white">
                                 Create Order
                             </h3>
-                            <form className="space-y-6" action="#" onSubmit={(e) => { save(e); return onClose() }}>
+                            <form className="space-y-6" action="#" onSubmit={(e) => { save(e); }}>
                                 <div>
                                     <label
                                         htmlFor="email"

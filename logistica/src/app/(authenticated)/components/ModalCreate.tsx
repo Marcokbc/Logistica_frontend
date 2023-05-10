@@ -6,7 +6,7 @@ import { useState } from "react";
 import axios from "axios";
 import api from "@/app/services/api";
 
-export default function ModalCreate({ isVisible, onClose, validatePost}: any) {
+export default function ModalCreate({ isVisible, onClose, validatePost }: any) {
 
     const [nome, setNome] = useState('');
     const [origem, setOrigem] = useState('');
@@ -30,16 +30,22 @@ export default function ModalCreate({ isVisible, onClose, validatePost}: any) {
             status
         }
 
-        try {
-            console.log(data);
-            await api.post('api/Pedido', data, authorization)
-            .then(response => {
-                toast.info("Pedido criado com sucesso.");
-                validatePost(true);
-            })
-        } catch (error) {
-            alert(error);
+        if (!data.nome || !data.origem || !data.destino || !data.status) {
+            toast.error("Informe todos os campos!")
+        } else {
+            try {
+                console.log(data);
+                await api.post('api/Pedido', data, authorization)
+                    .then(response => {
+                        toast.success("Pedido criado com sucesso.");
+                        validatePost(true);
+                        onClose();
+                    })
+            } catch (error) {
+                alert(error);
+            }
         }
+
     }
 
     function handleChangeOrigem(event: any) {
@@ -109,7 +115,7 @@ export default function ModalCreate({ isVisible, onClose, validatePost}: any) {
                             <h3 className="mb-4 text-xl font-medium text-gray-900 dark:text-white">
                                 Create Order
                             </h3>
-                            <form className="space-y-6" action="#" onSubmit={(e)=> {save(e); return onClose()}}>
+                            <form className="space-y-6" action="#" onSubmit={(e) => { save(e); }}>
                                 <div>
                                     <label
                                         htmlFor="email"
