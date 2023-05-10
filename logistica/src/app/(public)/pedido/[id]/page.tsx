@@ -1,4 +1,5 @@
 'use client';
+import { format } from 'date-fns';
 import { useEffect, useState } from 'react';
 import Footer from '../../footer';
 import Header from '../../header';
@@ -46,7 +47,7 @@ export default function Pedido({ params }: { params: { id: string } }) {
                                 <div className="w-full h-12 animate-pulse rounded-2xl">
                                     <p>Rotas</p>
                                     {pedido?.rotas.map(rota => (
-                                        <p className='ml-6'>{rota.nomeCidade} : {rota.dataRota}</p>
+                                        <p className='ml-6'>{rota.nomeCidade} : {format(new Date(rota.dataRota), 'dd/MM/yyyy HH:mm:ss') }</p>
                                     ))}
                                 </div>
                             </div>
