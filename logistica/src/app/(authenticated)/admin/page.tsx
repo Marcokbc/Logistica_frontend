@@ -11,7 +11,6 @@ import axios from "axios";
 import api from "@/app/services/api";
 import { Order } from "@/app/models/Order";
 
-
 export default function Admin() {
     const [pedidos, setPedidos] = useState<Order>();
     const [pageNumber, setPageNumber] = useState(1);
@@ -61,14 +60,11 @@ export default function Admin() {
                     response => {
                         setPedidos(response.data.items);
                         setTotalPages(response.data.totalPages);
-                        // console.log(response.data.totalPages);
                     });
         } catch (error) {
             console.log(error);
         }
     }, [pageNumber, requestSuccess])
-
-    console.log("renderizou");
 
     const renderButtons = () => {
         const buttons = [];
@@ -246,7 +242,7 @@ export default function Admin() {
             <ModalDelete
                 onClose={handleCloseDelete} isVisible={showModalDelete.isOpen}
                 pedidoId={showModalDelete.pedidoId}
-                validateDelete={validateRequest}/>
+                validateDelete={validateRequest} />
             <ModalCreate onClose={handleCloseCreate} isVisible={showModalCreate}
                 validatePost={validateRequest} />
             <ModalUpdate

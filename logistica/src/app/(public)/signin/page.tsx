@@ -26,18 +26,22 @@ export default function Signin() {
             userName, password
         };
 
-        try {
+        if (!data.userName || !data.password) {
+            toast.info("Informe o usuario e a senha!")
+        } else {
+            try {
 
-            const response = await api.post('api/Account/LoginUser', data);
+                const response = await api.post('api/Account/LoginUser', data);
 
-            localStorage.setItem('userName', userName);
-            localStorage.setItem('token', response.data.token);
-            localStorage.setItem('expiration', response.data.expiration);
+                localStorage.setItem('userName', userName);
+                localStorage.setItem('token', response.data.token);
+                localStorage.setItem('expiration', response.data.expiration);
 
-            router.push('/admin');
-            toast.info('Login realizado com sucesso.');
-        } catch (error) {
-            alert('O login falhou ' + error)
+                router.push('/admin');
+                toast.info('Login realizado com sucesso.');
+            } catch (error) {
+                toast.error('Usuario e/ou senha invalidos.');
+            }
         }
     }
 

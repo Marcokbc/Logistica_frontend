@@ -17,23 +17,28 @@ export default function SignUp() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const router = useRouter();
 
-    async function login(event: any) {
+    async function register(event: any) {
         event.preventDefault();
 
         const data = {
             userName, email, password, confirmPassword
         };
 
-        try {
-            const response = await api.post('api/Account/CreateUser', data)
-                .then(response => {
-                    toast.info("Conta Criada com Sucesso");
-                });
-
-            router.push('/signin');
-        } catch (error) {
-            alert('O login falhou ' + error)
+        if(!data.userName || !data.email || data.password || data.confirmPassword){
+            toast.info("Todos os campos são obrigatórios.");
+        }else{
+            try {
+                const response = await api.post('api/Account/CreateUser', data)
+                    .then(response => {
+                        toast.info("Conta Criada com Sucesso");
+                    });
+    
+                router.push('/signin');
+            } catch (error) {
+                toast.error('Não foi possivel realizar o cadastro' + error)
+            }
         }
+        
     }
     return (
         <>
@@ -53,7 +58,7 @@ export default function SignUp() {
                     <div className="container flex items-center justify-center flex-1 h-full mx-auto">
                         <div className="w-full max-w-lg">
                             <div className="leading-loose">
-                                <form onSubmit={login} className="max-w-sm p-10 m-auto rounded shadow-xl bg-white/25">
+                                <form onSubmit={register} className="max-w-sm p-10 m-auto rounded shadow-xl bg-white/25">
                                     <div className='flex flex-col justify-center items-center'>
                                         <Image src={signUpIcon} alt="signUp" />
                                     </div>
