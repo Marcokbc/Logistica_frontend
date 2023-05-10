@@ -14,15 +14,20 @@ import retiradoIcon from '../../../../../public/svg/retirado.svg';
 export default function Pedido({ params }: { params: { id: string } }) {
     const [pedido, setPedido] = useState<OrderById>();
 
-    try {
-        api.get(`api/Pedido/${params.id}`)
-            .then(
-                response => {
-                    setPedido(response.data);
-                });
-    } catch (error) {
-        console.log(error);
-    }
+    useEffect(() => {
+        try {
+            api.get(`api/Pedido/${params.id}`)
+                .then(
+                    response => {
+                        setPedido(response.data);
+                    });
+        } catch (error) {
+            console.log(error);
+        }
+    }, [])
+
+    console.log("renderizou");
+
 
     return (
         <>

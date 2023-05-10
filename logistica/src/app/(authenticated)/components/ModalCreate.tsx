@@ -6,7 +6,7 @@ import { useState } from "react";
 import axios from "axios";
 import api from "@/app/services/api";
 
-export default function ModalCreate({ isVisible, onClose }: any) {
+export default function ModalCreate({ isVisible, onClose, validatePost}: any) {
 
     const [nome, setNome] = useState('');
     const [origem, setOrigem] = useState('');
@@ -34,7 +34,8 @@ export default function ModalCreate({ isVisible, onClose }: any) {
             console.log(data);
             await api.post('api/Pedido', data, authorization)
             .then(response => {
-                toast.info("Pedido excluido com sucesso.");
+                toast.info("Pedido criado com sucesso.");
+                validatePost(true);
             })
         } catch (error) {
             alert(error);

@@ -2,11 +2,11 @@
 
 import { OrderById } from "@/app/models/OrderById";
 import api from "@/app/services/api";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function ModalUpdate({ isVisible, onClose, pedidoId }: any) {
+export default function ModalUpdate({ isVisible, onClose, pedidoId, validatePut }: any) {
     const [pedido, setPedido] = useState<OrderById>();
     const [name, setName] = useState(pedido?.nome);
     const [status, setStatus] = useState(pedido?.status);
@@ -18,17 +18,21 @@ export default function ModalUpdate({ isVisible, onClose, pedidoId }: any) {
         }
     }
 
-    if (isVisible) {
-        try {
-            api.get(`api/Pedido/${pedidoId}`)
-                .then(
-                    response => {
-                        setPedido(response.data);
-                    });
-        } catch (error) {
-            console.log(error);
+    useEffect(() => {
+        if (isVisible) {
+            try {
+                api.get(`api/Pedido/${pedidoId}`)
+                    .then(
+                        response => {
+                            setPedido(response.data);
+                        });
+            } catch (error) {
+                console.log(error);
+            }
         }
-    }
+    }, [])
+
+    console.log("renderizou");
 
     async function update(event: any) {
         event.preventDefault();
@@ -46,6 +50,7 @@ export default function ModalUpdate({ isVisible, onClose, pedidoId }: any) {
             await api.put(`api/Pedido/${pedidoId}`, data, authorization)
                 .then(response => {
                     toast.info("Pedido alterado com sucesso!");
+                    validatePut(true);
                 })
         } catch (error) {
             alert(error);

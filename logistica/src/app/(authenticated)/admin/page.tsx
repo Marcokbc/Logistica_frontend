@@ -19,6 +19,12 @@ export default function Admin() {
     const [totalPages, setTotalPages] = useState(0);
     const token = localStorage.getItem('token');
 
+    const [requestSuccess, setRequestSuccess] = useState(false);
+
+    const validateRequest = (success: boolean) => {
+        setRequestSuccess(success);
+    }
+
     const authorization = {
         headers: {
             Authorization: `Bearer ${token}`
@@ -39,8 +45,6 @@ export default function Admin() {
 
     const [showModalLogout, setShowModalLogout] = useState(false);
 
-    const [orders, setOrders] = useState([]);
-
 
     const modalOn = (modalOn: boolean) => {
         setShowModalLogout(modalOn);
@@ -50,17 +54,21 @@ export default function Admin() {
         setShowModalLogout(modalOff);
     }
 
-    try {
-        api.get(`api/Pedido?pageNumber=${pageNumber}&pageSize=${pageSize}`, authorization)
-            .then(
-                response => {
-                    setPedidos(response.data.items);
-                    setTotalPages(response.data.totalPages);
-                    // console.log(response.data.totalPages);
-                });
-    } catch (error) {
-        console.log(error);
-    }
+    useEffect(() => {
+        try {
+            api.get(`api/Pedido?pageNumber=${pageNumber}&pageSize=${pageSize}`, authorization)
+                .then(
+                    response => {
+                        setPedidos(response.data.items);
+                        setTotalPages(response.data.totalPages);
+                        // console.log(response.data.totalPages);
+                    });
+        } catch (error) {
+            console.log(error);
+        }
+    }, [pageNumber, requestSuccess])
+
+    console.log("renderizou");
 
     const renderButtons = () => {
         const buttons = [];
@@ -213,7 +221,7 @@ export default function Admin() {
                                     {renderButtons()}
                                     <button
                                         type="button"
-                                        onClick={() => { pageNumber < totalPages ? setPageNumber(pageNumber + 1) : setPageNumber(pageNumber)}}
+                                        onClick={() => { pageNumber < totalPages ? setPageNumber(pageNumber + 1) : setPageNumber(pageNumber) }}
                                         className="w-full p-4 text-base text-gray-600 bg-white border rounded-r-xl hover:bg-gray-100"
                                     >
                                         <svg
@@ -236,10 +244,15 @@ export default function Admin() {
             <Footer />
 
             <ModalDelete
-                onClose={handleCloseDelete} isVisible={showModalDelete.isOpen} pedidoId={showModalDelete.pedidoId} />
-            <ModalCreate onClose={handleCloseCreate} isVisible={showModalCreate} />
+                onClose={handleCloseDelete} isVisible={showModalDelete.isOpen}
+                pedidoId={showModalDelete.pedidoId}
+                validateDelete={validateRequest}/>
+            <ModalCreate onClose={handleCloseCreate} isVisible={showModalCreate}
+                validatePost={validateRequest} />
             <ModalUpdate
-                onClose={handleCloseUpdate} isVisible={showModalUpdate.isOpen} pedidoId={showModalUpdate.pedidoId} />
+                onClose={handleCloseUpdate} isVisible={showModalUpdate.isOpen}
+                pedidoId={showModalUpdate.pedidoId}
+                validatePut={validateRequest} />
             <ModalRota
                 onClose={handleCloseRota} isVisible={showModalRota.isOpen} pedidoId={showModalRota.pedidoId} />
             <ModalLogout onClose={modalOff} isVisible={showModalLogout} />

@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import api from "@/app/services/api";
 
 
-export default function ModalDelete({ isVisible, onClose, pedidoId }: any) {
+export default function ModalDelete({ isVisible, onClose, pedidoId, validateDelete }: any) {
     const token = localStorage.getItem('token');
 
     const authorization = {
@@ -21,6 +21,7 @@ export default function ModalDelete({ isVisible, onClose, pedidoId }: any) {
             await api.delete(`api/Pedido/${pedidoId}`, authorization)
                 .then(response => {
                     toast.info("Venda Excluida com sucesso!");
+                    validateDelete(true);
                 });
                 
         } catch (error) {
