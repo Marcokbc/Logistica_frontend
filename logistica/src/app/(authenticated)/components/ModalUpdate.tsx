@@ -39,10 +39,10 @@ export default function ModalUpdate({ isVisible, onClose, pedidoId, validatePut 
 
         const data = {
             id: pedidoId,
-            nome: name,
+            nome: name ? name : pedido?.nome,
             origem: pedido?.origem,
             destino: pedido?.destino,
-            status: status
+            status: status ? status : pedido?.status
         }
 
         try {

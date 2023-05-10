@@ -100,7 +100,7 @@ export default function Admin() {
                                     Create new Pedido
                                 </button>
                             </div>
-                            <table className="table ml-72 sm:ml-0 p-4 bg-white rounded-lg shadow">
+                            <table className="table ml-80 sm:ml-0 p-4 bg-white rounded-lg shadow">
                                 <thead>
                                     <tr>
                                         <th className="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
