@@ -50,7 +50,7 @@ export default function Home() {
                     <span className="block text-gray-800">Digite o código no campo abaixo.</span>
                   </h2>
                 </div>
-                <h2>ENCONTRE SEU PEDIDO:</h2>
+                <h2 className='font-bold'>ENCONTRE SEU PEDIDO:</h2>
                 <div className="flex relative ">
                   <span className="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
                     <svg

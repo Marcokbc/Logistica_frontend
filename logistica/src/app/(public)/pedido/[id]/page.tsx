@@ -39,7 +39,7 @@ export default function Pedido({ params }: { params: { id: string } }) {
                         <div className="flex flex-col flex-1 gap-5 sm:p-2">
                             <div className="flex flex-col flex-1 gap-3">
                                 <div className="flex flex-col items-center w-full animate-pulse h-14 rounded-2xl">
-                                    <h2 className='text-2xl'>{pedido?.nome}</h2>
+                                    <h2 className='text-2xl font-bold'>{pedido?.nome}</h2>
                                 </div>
                                 <div className="w-full h-7 animate-pulse rounded-2xl">
                                     <p>{pedido?.origem} : {pedido?.destino}</p>
