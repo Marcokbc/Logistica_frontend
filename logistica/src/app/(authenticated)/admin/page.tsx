@@ -93,7 +93,7 @@ export default function Admin() {
                                     className="py-2 mb-2 px-4 content-start bg-gray-800 hover:bg-sky-700 focus:ring-sky-500 focus:ring-offset-sky-200 text-white w-18 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
                                     onClick={() => setShowModalCreate(true)}
                                 >
-                                    Create new Pedido
+                                    Criar Novo Pedido
                                 </button>
                             </div>
                             <table className="table ml-80 sm:ml-0 p-4 bg-white rounded-lg shadow">
@@ -103,13 +103,13 @@ export default function Admin() {
                                             #
                                         </th>
                                         <th className="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
-                                            Name
+                                            Nome
                                         </th>
                                         <th className="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
                                             Status
                                         </th>
                                         <th className="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
-                                            Codigo
+                                            Código
                                         </th>
                                         <th className="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
                                             Rotas

@@ -68,7 +68,7 @@ export default function Signin() {
                                                     type="text"
                                                     id="design-login-email"
                                                     className="flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                                    placeholder="Username"
+                                                    placeholder="Usuário"
                                                     value={userName}
                                                     onChange={e => setUsername(e.target.value)}
                                                 />
@@ -83,7 +83,7 @@ export default function Signin() {
                                                     type="password"
                                                     id="design-login-password"
                                                     className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                                    placeholder="Password"
+                                                    placeholder="Senha"
                                                     value={password}
                                                     onChange={e => setPassword(e.target.value)}
                                                 />
@@ -94,15 +94,15 @@ export default function Signin() {
                                             onClick={login}
                                             className="w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-black shadow-md hover:text-black hover:bg-white focus:outline-none focus:ring-2"
                                         >
-                                            <span className="w-full">Submit</span>
+                                            <span className="w-full">Login</span>
                                         </button>
                                     </form>
                                     <div className="pt-12 pb-12 text-center">
                                         <p>
-                                            Don't have an account?
+                                            Não tem uma conta?
                                             <a href="#" className="font-semibold underline">
                                                 <Link href="/signup">
-                                                    Register here.
+                                                    Registre-se aqui.
                                                 </Link>
                                             </a>
                                         </p>

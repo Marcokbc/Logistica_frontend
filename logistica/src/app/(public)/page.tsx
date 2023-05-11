@@ -45,12 +45,12 @@ export default function Home() {
                 <div className="text-center w-full mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
                   <h2 className="flex flex-col justify-center items-center text-3xl font-extrabold text-black dark:text-white sm:text-4xl">
                     <div className='bg-gray-800 rounded-lg w-full sm:w-2/5'>
-                      <span className="block">Want to find your order?</span>
+                      <span className="block">Quer encontrar seu pedido?</span>
                     </div>
-                    <span className="block text-gray-800">It's today or never.</span>
+                    <span className="block text-gray-800">Digite o código no campo abaixo.</span>
                   </h2>
                 </div>
-                <h2>FIND YOUR ORDER:</h2>
+                <h2>ENCONTRE SEU PEDIDO:</h2>
                 <div className="flex relative ">
                   <span className="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
                     <svg
@@ -68,7 +68,7 @@ export default function Home() {
                     className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                     name="codigo"
                     onChange={handleChangeOrder}
-                    placeholder="DIGITE O CODIGO..."
+                    placeholder="DIGITE O CÓDIGO..."
                   />
                 </div>
                 <button
@@ -76,7 +76,7 @@ export default function Home() {
                   onClick={() => (findOrderByCode(order))}
                   className=" pg-2 py-2 px-4  bg-white dark:bg-gray-800 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-w-1/6 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
                 >
-                  Find
+                  Buscar
                 </button>
               </div>
             </div>

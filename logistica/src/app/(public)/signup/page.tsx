@@ -17,6 +17,9 @@ export default function SignUp() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const router = useRouter();
 
+    const regexEmail = new RegExp(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+$/i);
+    const regexPassword = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.])[A-Za-z\d@$!%*?&.]{8,15}$/);
+
     async function register(event: any) {
         event.preventDefault();
 
@@ -24,21 +27,27 @@ export default function SignUp() {
             userName, email, password, confirmPassword
         };
 
-        if(!data.userName || !data.email || data.password || data.confirmPassword){
+        if (!data.userName || !data.email || !data.password || !data.confirmPassword) {
             toast.info("Todos os campos são obrigatórios.");
-        }else{
+        } else if (!regexPassword.test(data.password)) {
+            toast.info("A senha deve conter entre 8 e 15 caracteres, ao menos um número, uma letra maiúscula e um caracter especial.");
+        } else if (!regexEmail.test(data.email)) {
+            toast.info("Informe um E-mail valido.")
+        } else if (data.password != data.confirmPassword) {
+            toast.info("As senhas não conferem")
+        } else {
             try {
                 const response = await api.post('api/Account/CreateUser', data)
                     .then(response => {
                         toast.info("Conta Criada com Sucesso");
                     });
-    
+
                 router.push('/signin');
             } catch (error) {
                 toast.error('Não foi possivel realizar o cadastro' + error)
             }
         }
-        
+
     }
     return (
         <>
@@ -70,7 +79,8 @@ export default function SignUp() {
                                             <input
                                                 value={userName}
                                                 onChange={e => setUsername(e.target.value)}
-                                                type="text" id="login-with-bg-email" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Username" />
+                                                type="text" id="login-with-bg-email" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                                placeholder="Nome de Usuário" />
                                         </div>
                                     </div>
                                     <div className="mb-2">
@@ -78,7 +88,8 @@ export default function SignUp() {
                                             <input
                                                 value={email}
                                                 onChange={e => setEmail(e.target.value)}
-                                                type="text" id="login-with-bg-password" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="E-mail" />
+                                                type="text" id="login-with-bg-password" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                                placeholder="E-mail" />
                                         </div>
                                     </div>
                                     <div className="flex gap-4 mb-2">
@@ -86,18 +97,20 @@ export default function SignUp() {
                                             <input
                                                 value={password}
                                                 onChange={e => setPassword(e.target.value)}
-                                                type="password" id="login-with-bg-password" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Password" />
+                                                type="password" id="login-with-bg-password" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                                placeholder="Senha" />
                                         </div>
                                         <div className=" relative ">
                                             <input
                                                 value={confirmPassword}
                                                 onChange={e => setConfirmPassword(e.target.value)}
-                                                type="password" id="login-with-bg-password" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Confirm Password" />
+                                                type="password" id="login-with-bg-password" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                                placeholder="Repita a senha" />
                                         </div>
                                     </div>
                                     <div className="flex items-center justify-between mt-4">
                                         <button type="submit" className="py-2 px-4  bg-white dark:bg-gray-800 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
-                                            Create Account
+                                            Nova Conta
                                         </button>
                                     </div>
                                 </form>
