@@ -12,7 +12,7 @@ export default function ModalRota({ isVisible, onClose, pedidoId }: any) {
     const date = new Date();
     const date_format = date.toISOString();
 
-    const token = localStorage.getItem('token');
+    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : '';
     const authorization = {
         headers: {
             Authorization: `Bearer ${token}`

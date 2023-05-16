@@ -8,7 +8,7 @@ import sidebarIcon from '../../../public/svg/sidebar.svg';
 import logoutIcon from '../../../public/svg/logout.svg';
 
 export default function Header({ modalOn }: any) {
-    const username = localStorage.getItem('userName');
+    const username = typeof window !== 'undefined' ? localStorage.getItem('userName') : '';
     const [showSidebar, setShowSidebar] = useState(false);
     return (
         <>

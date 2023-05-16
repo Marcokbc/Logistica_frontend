@@ -13,7 +13,8 @@ export default function ModalCreate({ isVisible, onClose, validatePost }: any) {
     const [destino, setDestino] = useState('');
     const [status, setStatus] = useState('PedidoEfetuado');
 
-    const token = localStorage.getItem('token');
+    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : '';
+    
     const authorization = {
         headers: {
             Authorization: `Bearer ${token}`

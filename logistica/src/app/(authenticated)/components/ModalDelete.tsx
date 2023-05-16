@@ -6,7 +6,7 @@ import api from "@/app/services/api";
 
 
 export default function ModalDelete({ isVisible, onClose, pedidoId, validateDelete }: any) {
-    const token = localStorage.getItem('token');
+    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : '';
 
     const authorization = {
         headers: {

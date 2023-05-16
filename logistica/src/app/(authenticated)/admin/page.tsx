@@ -16,7 +16,7 @@ export default function Admin() {
     const [pageNumber, setPageNumber] = useState(1);
     const [pageSize, setPageSize] = useState(4);
     const [totalPages, setTotalPages] = useState(0);
-    const token = localStorage.getItem('token');
+    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : '';
 
     const [requestSuccess, setRequestSuccess] = useState(false);
 
@@ -64,7 +64,7 @@ export default function Admin() {
         } catch (error) {
             console.log(error);
         }
-    }, [pageNumber, requestSuccess])
+    }, [pageNumber, requestSuccess,])
 
     const renderButtons = () => {
         const buttons = [];
@@ -82,6 +82,9 @@ export default function Admin() {
 
     return (
         <>
+            <head>
+                <title>Admin - Logistica</title>
+            </head>
             <Header modalOn={modalOn} />
             <main className='bg-gray-100'>
                 <div className="lg:mt-0 lg:flex-shrink-0">

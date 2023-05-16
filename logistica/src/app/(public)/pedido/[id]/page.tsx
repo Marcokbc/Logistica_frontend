@@ -27,11 +27,12 @@ export default function Pedido({ params }: { params: { id: string } }) {
         }
     }, [])
 
-    console.log("renderizou");
-
 
     return (
         <>
+            <head>
+                <title>Pedido - Logistica</title>
+            </head>
             <Header />
             <main className='bg-gray-100'>
                 <div className="flex flex-col space-y-4 h-screen justify-center items-center ">
@@ -44,15 +45,15 @@ export default function Pedido({ params }: { params: { id: string } }) {
                                 <div className="w-full h-7 animate-pulse rounded-2xl">
                                     <p>{pedido?.origem} : {pedido?.destino}</p>
                                 </div>
-                                <div className="w-full h-12 animate-pulse rounded-2xl">
+                                <div className="w-full display:inline-block h-20 animate-pulse rounded-2xl">
                                     <p>Rotas</p>
                                     {pedido?.rotas.map(rota => (
-                                        <p className='ml-6'>{rota.nomeCidade} : {format(new Date(rota.dataRota), 'dd/MM/yyyy HH:mm:ss') }</p>
+                                        <p className='ml-6'>{rota.nomeCidade} : {format(new Date(rota.dataRota), 'dd/MM/yyyy HH:mm:ss')}</p>
                                     ))}
                                 </div>
                             </div>
-                            <div>
-                                <p className="animate-pulse">Status</p>
+                            <div className='relative'>
+                                <p className='animate-pulse'>Status</p>
                             </div>
                             {pedido?.status == "Retirado" &&
                                 <div className="flex gap-3 xl:gap-24 2xl:gap-28 md:gap-5 mt-auto">

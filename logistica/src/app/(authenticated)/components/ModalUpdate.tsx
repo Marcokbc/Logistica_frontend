@@ -11,7 +11,8 @@ export default function ModalUpdate({ isVisible, onClose, pedidoId, validatePut 
     const [name, setName] = useState(pedido?.nome);
     const [status, setStatus] = useState(pedido?.status);
 
-    const token = localStorage.getItem('token');
+    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : '';
+    
     const authorization = {
         headers: {
             Authorization: `Bearer ${token}`
@@ -31,8 +32,6 @@ export default function ModalUpdate({ isVisible, onClose, pedidoId, validatePut 
             }
         }
     }, [])
-
-    console.log("renderizou");
 
     async function update(event: any) {
         event.preventDefault();

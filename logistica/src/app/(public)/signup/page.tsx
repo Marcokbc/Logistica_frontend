@@ -51,6 +51,9 @@ export default function SignUp() {
     }
     return (
         <>
+            <head>
+                <title>Cadastrar - Logistica</title>
+            </head>
             <Header />
 
             <main >

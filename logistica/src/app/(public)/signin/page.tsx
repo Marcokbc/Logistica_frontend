@@ -47,6 +47,9 @@ export default function Signin() {
 
     return (
         <>
+            <head>
+                <title>Login - Logistica</title>
+            </head>
             <Header />
             <main className='bg-gray-100'>
                 <div>
